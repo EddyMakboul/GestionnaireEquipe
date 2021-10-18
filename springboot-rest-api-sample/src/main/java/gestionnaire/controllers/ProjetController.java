@@ -1,19 +1,26 @@
 package gestionnaire.controllers;
 
+import gestionnaire.model.Employe;
 import gestionnaire.model.Projet;
 import gestionnaire.repository.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.PostConstruct;
 
 @RestController
 @RequestMapping("/api")
 public class ProjetController {
+
     @Autowired
     ProjetRepository repo;
+
+    @PostConstruct
+    public void populate() {
+        Projet projet = new Projet("Projet 1", "Description 1", new Employe());
+    }
 
     @GetMapping("/projet")
     public Iterable<Projet> getAllProjet() {
@@ -25,5 +32,16 @@ public class ProjetController {
         return repo.findById(id).get();
     }
 
+    @DeleteMapping("/projet/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    void deleteProjet(@PathVariable long id) {
+        repo.deleteById(id);
+    }
+
+    @PostMapping("/projet")
+    public Projet postProjet(@RequestBody Projet p) {
+        repo.save(p);
+        return p;
+    }
 
 }
