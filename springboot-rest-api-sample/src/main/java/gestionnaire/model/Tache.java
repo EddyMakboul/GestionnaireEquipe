@@ -27,11 +27,11 @@ public class Tache implements Serializable {
     private boolean finished;
 
     @ManyToOne
-    @Column(name="employe")
+    @JoinColumn(name="employe")
     private Employe employe;
 
     @ManyToOne
-    @Column(name="projet")
+    @JoinColumn(name="projet")
     private Projet projet;
 
     public Tache() {
