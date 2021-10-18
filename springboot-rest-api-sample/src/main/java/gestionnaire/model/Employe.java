@@ -42,20 +42,10 @@ public class Employe implements Serializable {
     private List<Tache> taches;
 
     @ManyToMany
-    @JoinTable(
-            name = "Employe_Competence",
-            joinColumns = { @JoinColumn(name = "id_employe") },
-            inverseJoinColumns = { @JoinColumn(name = "id_competence") }
-    )
     @OrderBy("nom_competence ASC")
     private List<Competence> competences;
 
     @ManyToMany
-    @JoinTable(
-            name = "Employe_Projet",
-            joinColumns = { @JoinColumn(name = "id_employe") },
-            inverseJoinColumns = { @JoinColumn(name = "id_projet") }
-    )
     @OrderBy("nom_projet ASC")
     private List<Projet> projets;
 
