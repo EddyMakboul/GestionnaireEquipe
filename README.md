@@ -1,2 +1,2 @@
-# GestionnaireEquipe
-permet de gérer ses équipes et leur tâches affecté
+# Gestionnaire Equipe GDX_21
+Plateforme de gestion d'équipe et de tâches.
