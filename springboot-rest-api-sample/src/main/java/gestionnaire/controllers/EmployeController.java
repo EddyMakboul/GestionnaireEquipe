@@ -82,7 +82,7 @@ public class EmployeController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         logger.info("Return updated employe");
-        return new ResponseEntity<>(updatedEmploye, HttpStatus.CREATED);
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -121,7 +121,7 @@ public class EmployeController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         logger.info("Return updated employe");
-        return new ResponseEntity<>(updatedEmploye, HttpStatus.CREATED);
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
     }
 
 
@@ -148,6 +148,6 @@ public class EmployeController {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         logger.info("Return updated employe");
-        return new ResponseEntity<>(updatedEmploye, HttpStatus.CREATED);
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
     }
 }
