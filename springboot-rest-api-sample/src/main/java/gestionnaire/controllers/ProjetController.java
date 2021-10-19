@@ -19,6 +19,7 @@ public class ProjetController {
 
     @PostConstruct
     public void populate() {
+
         Projet projet = new Projet("Projet 1", "Description 1", new Employe());
     }
 
