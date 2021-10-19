@@ -1,0 +1,13 @@
+.card-container {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border: solid;
+    height: 150px;
+    width: 200px;
+}

@@ -1,2 +1,18 @@
-<p>Project Page</p>
-<router-outlet></router-outlet>
+<div fxLayout="column" fxFill class="project">
+    <div fxLayout="column" fxLayoutAlign="space-between none" fxFlex="20" class="project-part parent">
+        <h1>RB.17 Status Board</h1>
+
+        <div fxLayout="row" fxLayoutAlign="space-between end" class="buttons">
+            <button mat-button>Overview</button>
+            <div fxLayoutGap="20px" class="button-right">
+                <button mat-button>Team</button>
+                <button mat-button>Taks</button>
+            </div>
+
+        </div>
+
+    </div>
+    <div fxFlex="80" class="project-part child">
+        <router-outlet></router-outlet>
+    </div>
+</div>

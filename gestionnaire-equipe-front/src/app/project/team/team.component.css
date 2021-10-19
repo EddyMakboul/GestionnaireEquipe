@@ -1,0 +1,15 @@
+.card-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 15%;
+    height: 200px;
+    border: solid;
+}
+
+.chip {
+    background-color: rgb(116, 116, 156);
+}

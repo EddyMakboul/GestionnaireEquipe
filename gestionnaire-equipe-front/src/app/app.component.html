@@ -1,8 +1,8 @@
-<mat-sidenav-container class="page">
-    <mat-sidenav mode="side" opened class="sideNav">
+<div fxLayout="row" class="page">
+    <div fxFlex="20" class="side-nav">
         <app-side-bar></app-side-bar>
-    </mat-sidenav>
-    <mat-sidenav-content class="main-content">
+    </div>
+    <div fxFlex="80" class="main-containt">
         <router-outlet></router-outlet>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+    </div>
+</div>
