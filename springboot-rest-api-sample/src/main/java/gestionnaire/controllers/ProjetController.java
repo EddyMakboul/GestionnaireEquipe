@@ -17,12 +17,6 @@ public class ProjetController {
     @Autowired
     ProjetRepository repo;
 
-    @PostConstruct
-    public void populate() {
-
-        Projet projet = new Projet("Projet 1", "Description 1", new Employe());
-    }
-
     @GetMapping("/projet")
     public Iterable<Projet> getAllProjet() {
         return repo.findAll();
