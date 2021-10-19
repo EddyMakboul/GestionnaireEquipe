@@ -64,6 +64,30 @@ public class Employe implements Serializable {
         this.projets = new ArrayList<>();
     }
 
+    public void addCompetence(Competence competence){
+        this.competences.add(competence);
+    }
+
+    public void deleteCompetence(Competence competence){
+        this.competences.remove(competence);
+    }
+
+    public void addTache(Tache tache){
+        this.taches.add(tache);
+    }
+
+    public void deleteTache(Tache tache){
+        this.taches.remove(tache);
+    }
+
+    public void addProjet(Projet projet){
+        this.projets.add(projet);
+    }
+
+    public void deleteProjet(Projet projet){
+        this.projets.add(projet);
+    }
+
     public long getId() {
         return id;
     }

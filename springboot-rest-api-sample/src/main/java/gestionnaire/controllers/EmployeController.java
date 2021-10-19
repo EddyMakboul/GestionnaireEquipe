@@ -1,6 +1,8 @@
 package gestionnaire.controllers;
 
+import gestionnaire.model.Competence;
 import gestionnaire.model.Employe;
+import gestionnaire.repository.CompetenceRepository;
 import gestionnaire.repository.EmployeRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -21,6 +23,9 @@ public class EmployeController {
 
     @Autowired
     EmployeRepository employeRepository;
+
+    @Autowired
+    CompetenceRepository competenceRepository;
 
     @GetMapping()
     public ResponseEntity<List<Employe>> findAllEmployes ()
@@ -91,5 +96,58 @@ public class EmployeController {
         employeRepository.delete(employe.get());
         logger.info("Employe with id = "+id+" deleted");
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/addcompetence/{id}")
+    public ResponseEntity<Employe> updateEmployeAddCompetence (@RequestBody Competence competence, @PathVariable Long id)
+    {
+        Optional<Employe> potentialEmploye = employeRepository.findById(id);
+        if (potentialEmploye.isEmpty()){
+            logger.error("Can't add competence to employe. Employe with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (competenceRepository.findById(competence.getId()).isEmpty()){
+            logger.error("Can't add competence to employe. Competence with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Employe updatedEmploye;
+        Employe employe = potentialEmploye.get();
+        employe.addCompetence(competence);
+        try {
+            updatedEmploye = employeRepository.save(employe);
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of employee with id = "+employe.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated employe");
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.CREATED);
+    }
+
+
+    @PutMapping("/removecompetence/{id}")
+    public ResponseEntity<Employe> updateEmployeRemoveCompetence (@RequestBody Competence competence, @PathVariable Long id)
+    {
+        Optional<Employe> potentialEmploye = employeRepository.findById(id);
+        if (potentialEmploye.isEmpty()){
+            logger.error("Can't remove competence to employe. Employe with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (competenceRepository.findById(competence.getId()).isEmpty()){
+            logger.error("Can't remove competence to employe. Competence with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Employe updatedEmploye;
+        Employe employe = potentialEmploye.get();
+        employe.deleteCompetence(competence);
+        try {
+            updatedEmploye = employeRepository.save(employe);
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of employee with id = "+employe.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated employe");
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.CREATED);
     }
 }
