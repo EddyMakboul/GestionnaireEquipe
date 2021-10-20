@@ -5,26 +5,27 @@ import gestionnaire.model.Projet;
 import gestionnaire.repository.ProjetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.PostConstruct;
+import java.util.List;
 
-@RestController
-@RequestMapping("/api")
+@Controller
+@RequestMapping("/api/projets")
 public class ProjetController {
 
     @Autowired
     ProjetRepository repo;
 
-    @GetMapping("/projet")
-    public Iterable<Projet> getAllProjet() {
-        return repo.findAll();
+    @GetMapping()
+    public ResponseEntity<List<Projet>> getAllProjet() {
+        return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/projet/{id}")
-    public Projet getProjet(@PathVariable long id) {
-        return repo.findById(id).get();
+    @GetMapping("/{id}")
+    public ResponseEntity<Projet> getProjet(@PathVariable long id) {
+        return new ResponseEntity<>(repo.findById(id).get(),HttpStatus.OK);
     }
 
     @DeleteMapping("/projet/{id}")
