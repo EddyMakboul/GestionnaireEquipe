@@ -95,4 +95,6 @@ public class Projet implements Serializable {
     public void setTaches(List<Tache> taches) {
         this.taches = taches;
     }
+
+    public void addEmploye(Employe employe) {this.employes.add(employe);}
 }
