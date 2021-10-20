@@ -1,1 +1,9 @@
-<p>side-bar works!</p>
+<div *ngFor="let item of projects">
+    <a routerLink='/project/{{item.id}}' routerLinkActive="active">{{item.nom_projet}}</a>
+</div>
+
+<div class="button-container">
+    <button (click)="goToNewDev()">new Dev</button>
+    <button (click)="goToNewProject()">new Project</button>
+
+</div>

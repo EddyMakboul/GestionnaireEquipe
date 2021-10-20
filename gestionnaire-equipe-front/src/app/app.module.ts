@@ -18,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon'
+import { ProjetService } from './shared/services/projet.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,6 @@ import { MatIconModule } from '@angular/material/icon'
     TeamComponent,
     TaskComponent,
     DevsOverviewComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -42,8 +43,9 @@ import { MatIconModule } from '@angular/material/icon'
     MatCardModule,
     MatChipsModule,
     MatIconModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ProjetService, ProjetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
