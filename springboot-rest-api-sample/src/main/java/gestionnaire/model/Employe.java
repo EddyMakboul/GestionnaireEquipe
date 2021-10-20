@@ -26,7 +26,7 @@ public class Employe implements Serializable {
     private String prenom;
 
     @Basic
-    @Column(name="login",nullable = false)
+    @Column(name="login",nullable = false, unique = true)
     private String login;
 
     @Basic
