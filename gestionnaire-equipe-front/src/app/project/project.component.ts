@@ -11,8 +11,9 @@ import { ProjetService } from '../shared/services/projet.service';
 export class ProjectComponent implements OnInit {
 
 
-  project?: Projet;
+  project: Projet;
   id?: number;
+  view: number = 1;
   constructor(private activatedRoute: ActivatedRoute,
     private projetService: ProjetService,
     private router: Router) { }
@@ -28,14 +29,14 @@ export class ProjectComponent implements OnInit {
   }
 
   goToOverview() {
-    this.router.navigate(['./overview'], { relativeTo: this.activatedRoute });
+    this.view = 1;
   }
   goToTask() {
-    this.router.navigate(['./task'], { relativeTo: this.activatedRoute });
+    this.view = 2;
   }
 
   goToTeam() {
-    this.router.navigate(['./team'], { relativeTo: this.activatedRoute });
+    this.view = 3;
   }
 
 }
