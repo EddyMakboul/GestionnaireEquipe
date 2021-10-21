@@ -26,6 +26,11 @@ export class DevsOverviewComponent implements OnInit {
     this.employeService.delete(id_employe).subscribe(
       response => {
         console.log(response);
+        this.employeService.findAll().subscribe(
+          employes => {
+            this.employes = employes;
+          }
+        )
       },
       errors => {
         console.log(errors)

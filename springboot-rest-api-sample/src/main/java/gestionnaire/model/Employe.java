@@ -28,11 +28,11 @@ public class Employe implements Serializable {
     private String prenom;
 
     @Basic
-    @Column(name="login")
+    @Column(name="login",nullable = true)
     private String login;
 
     @Basic
-    @Column(name="mdp")
+    @Column(name="mdp", nullable = true)
     private String mdp;
 
     @ManyToOne

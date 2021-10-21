@@ -47,6 +47,7 @@ export class NewDevComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.roleControl.value)
     if (this.devForm.valid) {
       console.log("Form Submitted!");
       this.roleService.findById(this.roleControl.value).subscribe(
@@ -54,14 +55,14 @@ export class NewDevComponent implements OnInit {
           this.employe.role = role;
           this.employe.nom = this.nameControl.value
           this.employe.prenom = this.firstNameControl.value
-
+          this.employeService.create(this.employe).subscribe(
+            response => {
+              console.log(response);
+            }
+          )
         }
       );
-      this.employeService.create(this.employe).subscribe(
-        response => {
-          console.log(response);
-        }
-      )
+
     }
   }
 
