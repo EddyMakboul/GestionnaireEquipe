@@ -32,10 +32,10 @@ public class EmployeController {
     {
         List<Employe> employes = employeRepository.findAll();
         if (!employes.isEmpty()) {
-            logger.error("There is no employes");
+        	 logger.info("Return list of employes");
             return new ResponseEntity<>(employes, HttpStatus.OK);
         }
-        logger.info("Return list of employes");
+        logger.error("There is no employes");
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
@@ -93,7 +93,13 @@ public class EmployeController {
             logger.error("Can't delete employe. Employe with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        employeRepository.delete(employe.get());
+        try {
+        	employeRepository.delete(employe.get());
+        } catch (Exception e) {
+        	logger.error(e);
+        	return new ResponseEntity<>(HttpStatus.CONFLICT);
+		}
+        
         logger.info("Employe with id = "+id+" deleted");
         return new ResponseEntity<>(HttpStatus.OK);
     }

@@ -28,13 +28,13 @@ public class ProjetController {
         return new ResponseEntity<>(repo.findById(id).get(),HttpStatus.OK);
     }
 
-    @DeleteMapping("/projet/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteProjet(@PathVariable long id) {
         repo.deleteById(id);
     }
 
-    @PostMapping("/projet")
+    @PostMapping()
     public Projet postProjet(@RequestBody Projet p) {
         repo.save(p);
         return p;

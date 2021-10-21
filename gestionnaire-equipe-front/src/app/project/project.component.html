@@ -13,6 +13,8 @@
 
     </div>
     <div fxFlex="80" class="project-part child">
-        <router-outlet></router-outlet>
+        <app-team *ngIf="view==3" [projet]="project"></app-team>
+        <app-task *ngIf="view==2" [projet]="project"></app-task>
+        <app-overview *ngIf="view==1" [projet]="project"></app-overview>
     </div>
 </div>

@@ -1,143 +1,24 @@
 <h1>Team members</h1>
 
 <div class="card-container">
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
-    <mat-card class="card">
-        <mat-card-header>
-            <mat-card-title>Makboul Eddy</mat-card-title>
-            <mat-card-subtitle>Developer</mat-card-subtitle>
-            <button mat-icon-button color="primary">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-card-header>
-        <mat-card-content>
-            <mat-chip-list aria-label="list compétence">
-                <mat-chip class="chip"> Java</mat-chip>
-                <mat-chip class="chip"> Angular</mat-chip>
-                <mat-chip class="chip"> C++</mat-chip>
-                <mat-chip class="chip"> MIPS</mat-chip>
-            </mat-chip-list>
-        </mat-card-content>
-    </mat-card>
+
+    <div *ngFor="let employe of projet.employes">
 
 
-
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>{{employe.nom}} {{employe.prenom}}</mat-card-title>
+                <button mat-icon-button (click)="removeFromTeam(employe.id)" color="primary">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-chip-list aria-label="list compétence">
+                    <div *ngFor="let comp of employe.competences">
+                        <mat-chip class="chip"> {{comp.nomCompetence}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
