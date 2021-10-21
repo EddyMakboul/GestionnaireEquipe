@@ -28,7 +28,7 @@ public class Projet implements Serializable {
     @OneToOne
     private Employe chef_projet;
 
-    @ManyToMany
+    @ManyToMany(cascade={ CascadeType.REMOVE, CascadeType.MERGE })
     @OrderBy("nom ASC")
     private List<Employe> employes;
 

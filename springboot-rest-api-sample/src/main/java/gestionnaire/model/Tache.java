@@ -26,7 +26,7 @@ public class Tache implements Serializable {
     @Column(name="finished",nullable = false)
     private boolean finished;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="employe")
     private Employe employe;
 
