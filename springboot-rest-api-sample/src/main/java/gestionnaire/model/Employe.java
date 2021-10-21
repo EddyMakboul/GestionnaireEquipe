@@ -45,7 +45,7 @@ public class Employe implements Serializable {
     @OrderBy("nom_competence ASC")
     private List<Competence> competences;
 
-    @ManyToMany(cascade={ CascadeType.MERGE }, mappedBy="employes")
+    @ManyToMany(fetch = FetchType.EAGER, cascade={ CascadeType.MERGE })
     @OrderBy("nom_projet ASC")
     private List<Projet> projets;
 
@@ -72,19 +72,6 @@ public class Employe implements Serializable {
         for (Competence competence1: this.competences){
             if (competence1.getId() == competence.getId()){
                 this.competences.remove(competence1);
-                break;
-            }
-        }
-    }
-
-    public void addTache(Tache tache){
-        this.taches.add(tache);
-    }
-
-    public void deleteTache(Tache tache){
-        for (Tache tache1: this.taches){
-            if (tache1.getId() == tache.getId()){
-                this.taches.remove(tache1);
                 break;
             }
         }
