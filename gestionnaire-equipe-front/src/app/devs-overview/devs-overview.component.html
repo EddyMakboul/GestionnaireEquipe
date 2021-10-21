@@ -1,1 +1,19 @@
-<p>devs-overview works!</p>
+<div class="employe-container">
+    <div *ngFor="let employe of employes">
+        <mat-card class="card">
+            <mat-card-header>
+                <mat-card-title>{{employe.nom}} {{employe.prenom}}</mat-card-title>
+                <button mat-icon-button (click)="delete(employe.id)" color="primary">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-card-header>
+            <mat-card-content>
+                <mat-chip-list aria-label="list compétence">
+                    <div *ngFor="let comp of employe.competences">
+                        <mat-chip class="chip"> {{comp.nomCompetence}}</mat-chip>
+                    </div>
+                </mat-chip-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

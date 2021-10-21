@@ -1,18 +1,20 @@
 <div fxLayout="column" fxFill class="project">
     <div fxLayout="column" fxLayoutAlign="space-between none" fxFlex="20" class="project-part parent">
-        <h1>RB.17 Status Board</h1>
+        <h1>{{project?.nom_projet}} Status Board</h1>
 
         <div fxLayout="row" fxLayoutAlign="space-between end" class="buttons">
-            <button mat-button>Overview</button>
+            <button mat-button (click)="goToOverview()">Overview</button>
             <div fxLayoutGap="20px" class="button-right">
-                <button mat-button>Team</button>
-                <button mat-button>Taks</button>
+                <button mat-button (click)="goToTeam()">Team</button>
+                <button mat-button (click)="goToTask()">Taks</button>
             </div>
 
         </div>
 
     </div>
     <div fxFlex="80" class="project-part child">
-        <router-outlet></router-outlet>
+        <app-team *ngIf="view==3" [projet]="project"></app-team>
+        <app-task *ngIf="view==2" [projet]="project"></app-task>
+        <app-overview *ngIf="view==1" [projet]="project"></app-overview>
     </div>
 </div>

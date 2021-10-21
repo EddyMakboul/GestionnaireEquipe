@@ -13,7 +13,7 @@ export class ProjetService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProjetById(id_projet: number): Observable<Projet> {
+  getProjetById(id_projet: number): Observable<Projet> {
     return this.http.get<Projet>(this.ressourceUrl + '/' + id_projet);
   }
 
