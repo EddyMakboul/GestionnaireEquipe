@@ -9,7 +9,7 @@ import { Projet } from '../model/projet.model';
 })
 export class ProjetService {
 
-  private ressourceUrl = 'localhost://8080/api/projets'
+  private ressourceUrl = 'http://localhost:8080/api/projets'
 
   constructor(private http: HttpClient) { }
 
