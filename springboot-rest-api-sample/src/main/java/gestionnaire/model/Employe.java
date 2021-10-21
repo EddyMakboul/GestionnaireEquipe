@@ -45,7 +45,7 @@ public class Employe implements Serializable {
     @OrderBy("nom_competence ASC")
     private List<Competence> competences;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade={ CascadeType.MERGE })
+    @ManyToMany( cascade={ CascadeType.MERGE })
     @OrderBy("nom_projet ASC")
     private List<Projet> projets;
 
