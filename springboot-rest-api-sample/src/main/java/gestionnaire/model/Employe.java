@@ -1,5 +1,7 @@
 package gestionnaire.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -26,11 +28,11 @@ public class Employe implements Serializable {
     private String prenom;
 
     @Basic
-    @Column(name="login",nullable = false)
+    @Column(name="login")
     private String login;
 
     @Basic
-    @Column(name="mdp",nullable = false)
+    @Column(name="mdp")
     private String mdp;
 
     @ManyToOne
@@ -39,6 +41,7 @@ public class Employe implements Serializable {
 
     @OneToMany(mappedBy="employe")
     @OrderBy("nom_tache ASC")
+    @JsonIgnore
     private List<Tache> taches;
 
     @ManyToMany

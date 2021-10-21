@@ -1,5 +1,7 @@
 package gestionnaire.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -32,6 +34,7 @@ public class Tache implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="projet")
+    @JsonIgnore
     private Projet projet;
 
     public Tache() {
