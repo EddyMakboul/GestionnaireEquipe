@@ -42,6 +42,22 @@ public class EmployeService {
         employeRepository.deleteAll();
     }
 
+    public void deleteEmployeById(Long id){
+        Employe employe = employeRepository.findById(id).get();
+        Projet projet;
+        projet = projetRepository.findByProjetByChef(employe);
+        if (projet != null){
+            projet.setChef_projet(null);
+            projetRepository.save(projet);
+        }
+        employe.setTaches(new ArrayList<>());
+        deleteEmployeeTache(employe);
+        employe.setProjets(new ArrayList<>());
+        employe.setCompetences(new ArrayList<>());
+        employeRepository.save(employe);
+        employeRepository.delete(employe);
+    }
+
     @Transactional
     public List<Employe> findByNomAndPrenom(String nom, String prenom){
         List<Employe> employes = employeRepository.findByNomAndPrenom(nom, prenom);

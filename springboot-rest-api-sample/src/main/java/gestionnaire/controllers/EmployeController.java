@@ -7,6 +7,7 @@ import gestionnaire.repository.CompetenceRepository;
 import gestionnaire.repository.EmployeRepository;
 import gestionnaire.repository.ProjetRepository;
 import gestionnaire.repository.TaskRepository;
+import gestionnaire.service.EmployeService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ import java.util.Optional;
 public class EmployeController {
 
     private final Log logger = LogFactory.getLog(getClass());
+
+    @Autowired
+    EmployeService employeService;
 
     @Autowired
     EmployeRepository employeRepository;
@@ -103,7 +107,7 @@ public class EmployeController {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
         try {
-        	employeRepository.delete(employe.get());
+        	employeService.deleteEmployeById(id);
         } catch (Exception e) {
         	logger.error(e);
         	return new ResponseEntity<>(HttpStatus.CONFLICT);
