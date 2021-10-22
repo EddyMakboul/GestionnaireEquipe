@@ -297,4 +297,16 @@ public class EmployeController {
         return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
     }
 
+    @GetMapping("/chef")
+    public ResponseEntity<List<Employe>> findAllchef ()
+    {
+        List<Employe> employes = employeRepository.findAllChefDeProjet();
+        if (!employes.isEmpty()) {
+            logger.info("Return list of chef");
+            return new ResponseEntity<>(employes, HttpStatus.OK);
+        }
+        logger.error("There is no chef");
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
