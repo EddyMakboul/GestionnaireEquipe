@@ -10,6 +10,6 @@ export class Employee {
     public role?: Role;
     public taches?: Tache[];
     public competences?: Competence[];
-    public projets?: Projet;
+    public projet?: Projet;
 
 };

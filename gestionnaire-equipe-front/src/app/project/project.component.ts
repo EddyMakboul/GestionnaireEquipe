@@ -12,7 +12,7 @@ export class ProjectComponent implements OnInit {
 
 
   project: Projet;
-  id?: number;
+  id: number;
   view: number = 1;
   constructor(private activatedRoute: ActivatedRoute,
     private projetService: ProjetService,
@@ -23,7 +23,6 @@ export class ProjectComponent implements OnInit {
       this.id = params.id;
       this.projetService.getProjetById(params.id).subscribe(projet => {
         this.project = projet;
-        console.log(this.project);
       })
     });
   }
@@ -37,6 +36,12 @@ export class ProjectComponent implements OnInit {
 
   goToTeam() {
     this.view = 3;
+  }
+
+  updateProjet() {
+    this.projetService.getProjetById(this.id).subscribe(projet => {
+      this.project = projet;
+    })
   }
 
 }

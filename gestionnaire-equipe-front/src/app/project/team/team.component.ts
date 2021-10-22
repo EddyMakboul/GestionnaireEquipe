@@ -3,6 +3,7 @@ import { Projet } from 'src/app/shared/model/projet.model';
 import { Output, EventEmitter } from '@angular/core';
 import { ProjetService } from 'src/app/shared/services/projet.service';
 import { Employee } from 'src/app/shared/model/employee.model';
+import { EmployeeService } from 'src/app/shared/services/employee.service';
 
 @Component({
   selector: 'app-team',
@@ -11,19 +12,20 @@ import { Employee } from 'src/app/shared/model/employee.model';
 })
 export class TeamComponent implements OnInit {
 
-  @Output() projetEventEmiter = new EventEmitter<Projet>();
+  @Output() projetEventEmiter = new EventEmitter<void>();
 
   @Input() projet: Projet;
-  constructor(private projetService: ProjetService) { }
+  constructor(private projetService: ProjetService, private employeService: EmployeeService) { }
 
   ngOnInit(): void {
     console.log(this.projet)
   }
 
   removeFromTeam(employe: Employee) {
-    this.projetService.removeEmployeeToProjet(employe, this.projet.id).subscribe(
-      projet => {
-        this.projetEventEmiter.emit()
+    this.employeService.removeProjet(this.projet, employe.id).subscribe(
+      (data) => {
+        this.projetEventEmiter.emit();
+
       }
     )
   }
@@ -31,3 +33,7 @@ export class TeamComponent implements OnInit {
 
 
 }
+function data(data: any, arg1: (Employee: any) => void, arg2: void) {
+  throw new Error('Function not implemented.');
+}
+

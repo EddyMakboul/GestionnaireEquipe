@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Employee } from '../model/employee.model';
 import { Observable, throwError } from 'rxjs';
 import { Competence } from '../model/competence.model';
+import { Projet } from '../model/projet.model';
 
 
 @Injectable({
@@ -40,6 +41,9 @@ export class EmployeeService {
 
   removeCompetence(competence: Competence, id_employe: Number) {
     return this.http.post(this.ressourceUrl + '/removecompetence' + id_employe, competence);
+  }
+  removeProjet(projet: Projet, id_employe: Number) {
+    return this.http.put(this.ressourceUrl + '/removeprojet/' + id_employe, projet);
   }
 
 }
