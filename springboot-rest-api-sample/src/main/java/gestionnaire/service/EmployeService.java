@@ -9,6 +9,7 @@ import gestionnaire.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +40,17 @@ public class EmployeService {
             employeRepository.save(employe);
         }
         employeRepository.deleteAll();
+    }
+
+    @Transactional
+    public List<Employe> findByNomAndPrenom(String nom, String prenom){
+        List<Employe> employes = employeRepository.findByNomAndPrenom(nom, prenom);
+        for (Employe employe: employes){
+            employe.getCompetences().size();
+            employe.getTaches().size();
+            employe.getProjets().size();
+        }
+        return employes;
     }
 
     private void deleteEmployeeTache(Employe employe){
