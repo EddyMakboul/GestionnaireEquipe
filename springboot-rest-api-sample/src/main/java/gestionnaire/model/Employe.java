@@ -1,5 +1,7 @@
 package gestionnaire.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
@@ -26,27 +28,29 @@ public class Employe implements Serializable {
     private String prenom;
 
     @Basic
-    @Column(name="login",nullable = false)
+    @Column(name="login",nullable = true, unique = true)
     private String login;
 
     @Basic
-    @Column(name="mdp",nullable = false)
+    @Column(name="mdp", nullable = true)
     private String mdp;
 
     @ManyToOne
     @JoinColumn(name = "id_role")
     private Role role;
 
-    @OneToMany(mappedBy="employe")
+    @OneToMany( cascade = { CascadeType.MERGE }, mappedBy="employe")
     @OrderBy("nom_tache ASC")
+    @JsonIgnore
     private List<Tache> taches;
 
     @ManyToMany
     @OrderBy("nom_competence ASC")
     private List<Competence> competences;
 
-    @ManyToMany
+    @ManyToMany( cascade={ CascadeType.MERGE })
     @OrderBy("nom_projet ASC")
+    @JsonIgnore
     private List<Projet> projets;
 
     public Employe() {
@@ -69,15 +73,12 @@ public class Employe implements Serializable {
     }
 
     public void deleteCompetence(Competence competence){
-        this.competences.remove(competence);
-    }
-
-    public void addTache(Tache tache){
-        this.taches.add(tache);
-    }
-
-    public void deleteTache(Tache tache){
-        this.taches.remove(tache);
+        for (Competence competence1: this.competences){
+            if (competence1.getId() == competence.getId()){
+                this.competences.remove(competence1);
+                break;
+            }
+        }
     }
 
     public void addProjet(Projet projet){
@@ -85,8 +86,12 @@ public class Employe implements Serializable {
     }
 
     public void deleteProjet(Projet projet){
-        this.projets.add(projet);
-    }
+        for (Projet projet1: this.projets){
+            if (projet1.getId() == projet.getId()){
+                this.projets.remove(projet1);
+                break;
+            }
+        }    }
 
     public long getId() {
         return id;

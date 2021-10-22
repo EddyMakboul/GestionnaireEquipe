@@ -1,1 +1,16 @@
-<p>new-project works!</p>
+<h1>New Project</h1>
+
+<div class="new-projet-form">
+    <form novalidate [formGroup]="projetForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="name" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea type="description" class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

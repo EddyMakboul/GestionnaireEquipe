@@ -1,6 +1,9 @@
 package gestionnaire.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -28,12 +31,13 @@ public class Projet implements Serializable {
     @OneToOne
     private Employe chef_projet;
 
-    @ManyToMany
+    @ManyToMany( cascade={ CascadeType.MERGE },  mappedBy="projets")
     @OrderBy("nom ASC")
     private List<Employe> employes;
 
     @OneToMany(mappedBy="projet")
     @OrderBy("nom_tache ASC")
+    @JsonIgnore
     private List<Tache> taches;
 
     public Projet() {
@@ -95,4 +99,6 @@ public class Projet implements Serializable {
     public void setTaches(List<Tache> taches) {
         this.taches = taches;
     }
+
+    public void addEmploye(Employe employe) {this.employes.add(employe);}
 }

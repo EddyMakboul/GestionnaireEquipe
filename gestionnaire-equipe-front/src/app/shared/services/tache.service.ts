@@ -8,11 +8,11 @@ import { Tache } from '../model/tache.model';
 })
 export class TacheService {
 
-  private ressourceUrl = 'localhost://8080/api/taches'
+  private ressourceUrl = 'http://localhost:8080/api/taches'
 
   constructor(private http: HttpClient) { }
 
-  getAllTacheActiveByProjetId(id_projet: number): Observable<Tache[]> {
+  getAllTacheByProjetId(id_projet: number): Observable<Tache[]> {
     return this.http.get<Tache[]>(this.ressourceUrl + '/' + id_projet);
   }
 

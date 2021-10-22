@@ -11,20 +11,19 @@
             <div class="card card-body bg-transparent border-0 p-0">
                 <div class="row justify-content-center">
                     <ul class="col-7">
-                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['project/1']">W11</a></li>
-                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['project/1']">RB.17</a></li>
-                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['project/1']">MCL35</a></li>
-                    </ul>
+                      <div *ngFor="let item of projects">
+                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" routerLink='/project/{{item.id}}' routerLinkActive="active">{{item.nom_projet}}</a></li>
+                      </div>                    
+                     </ul>
                 </div>
             </div>
         </div>
 
         <div id="adding-links" class="position-absolute bottom-0">
             <ul class="col-10">
-                <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-plus text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['new-project']">New project</a></li>
-                <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-plus text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['new-dev']">New dev</a></li>
+                <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-plus text-white me-lg-1"></i> <a class="text-white mt-lg-2" (click)="goToNewProject()">New project</a></li>
+                <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-plus text-white me-lg-1"></i> <a class="text-white mt-lg-2" (click)="goToNewDev()">New dev</a></li>
             </ul>
         </div>
-
     </div>
 </div>

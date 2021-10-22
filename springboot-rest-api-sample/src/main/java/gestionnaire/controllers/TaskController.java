@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/task")
+@RequestMapping(value = "/api/taches")
 public class TaskController {
 
     private final Log logger = LogFactory.getLog(getClass());
@@ -20,24 +20,24 @@ public class TaskController {
     @Autowired
     TaskRepository taskRepository;
 
-    @GetMapping("/list")
+    @GetMapping()
     public Iterable<Tache> getAllActiveTasks(){
         return taskRepository.findAll();
     }
 
-    @PostMapping("/create")
-    public Tache createTask(@RequestBody Tache task){
-        taskRepository.save(task);
-        return task;
+    @PostMapping()
+    public Tache createTask(@RequestBody Tache tache){
+        taskRepository.save(tache);
+        return tache;
     }
 
-    @DeleteMapping("/delete")
+    @DeleteMapping()
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(@PathVariable long id){
         taskRepository.deleteById(id);
     }
 
-    @PutMapping("update")
+    @PutMapping()
     public ResponseEntity<Tache> updateEmploye (@RequestBody Tache task){
         Tache updateTask;
         if (taskRepository.findById(task.getId()).isEmpty()){

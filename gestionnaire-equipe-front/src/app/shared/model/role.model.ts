@@ -1,8 +1,4 @@
 export class Role {
-    constructor(
-        public id:number,
-        public nom_role:string,
-    ) {
-        
-    }
+    public id: number;
+    public nom_role: string;
 };

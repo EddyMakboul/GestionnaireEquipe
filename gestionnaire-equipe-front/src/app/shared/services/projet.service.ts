@@ -9,11 +9,11 @@ import { Projet } from '../model/projet.model';
 })
 export class ProjetService {
 
-  private ressourceUrl = 'localhost://8080/api/projets'
+  private ressourceUrl = 'http://localhost:8080/api/projets'
 
   constructor(private http: HttpClient) { }
 
-  getAllProjetById(id_projet: number): Observable<Projet> {
+  getProjetById(id_projet: number): Observable<Projet> {
     return this.http.get<Projet>(this.ressourceUrl + '/' + id_projet);
   }
 
