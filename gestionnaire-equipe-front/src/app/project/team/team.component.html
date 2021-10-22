@@ -1,21 +1,43 @@
+<div class="row justify-content-end mb-lg-3">
+  <a routerLink='/new-dev/{{projet.id}}' routerLinkActive="active"
+      class="col-auto p-0 fs-6 text-muted text-decoration-none d-flex align-items-end">
+      <i class="bi bi-plus fs-5"></i>
+      <span> Add member </span>
+  </a>
+</div>
+
 <h1 class="fs-2 fw-bold mt-lg-3"> Team members </h1>
 
 <div id="card-container">
 
   <div class="row justify-content-start mt-lg-3 gx-lg-1">
-    <div *ngFor="let employe of projet.employes">
-
-      <div class="card w-25 mx-lg-2 my-lg-4 shadow border-0">
+      <div *ngFor="let employe of projet.employes" class="card w-25 mx-lg-2 my-lg-4 shadow border-0">
         <div class="card-body">
           <h5 class="card-title fs-4">{{employe.prenom}} {{employe.nom}}</h5>
           <button (click)="removeFromTeam(employe)" color="btn btn-primary">Delete</button>
           <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
-          <div id="skills-section" class="row justify-content-center mt-lg-3" *ngFor="let comp of employe.competences">
-            <span class="badge bg-pastel-yellow fs-6 p-2 col-auto mx-lg-2 my-lg-2">{{comp.nomCompetence}}</span>
+          <div id="skills-section" class="row justify-content-center mt-lg-3">
+            <span *ngFor="let comp of employe.competences" class="badge bg-pastel-yellow fs-6 p-2 col-auto mx-lg-2 my-lg-2">{{comp.nomCompetence}}</span>
           </div>
         </div>
       </div>
-
-    </div>
   </div>
 </div>
+
+<!-- <div id="card-container">
+    
+    <div class="row justify-content-start mt-lg-3 gx-lg-1">
+
+        <div class="card w-25 mx-lg-2 my-lg-4 shadow border-0">
+            <div class="card-body">
+              <h5 class="card-title fs-4">Florent Dhont</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
+              <div id="skills-section" class="row justify-content-center mt-lg-3">
+                <span class="badge bg-pastel-yellow fs-6 p-2 col-auto mx-lg-2 my-lg-2"> Java </span>
+                <span class="badge bg-pastel-red fs-6 p-2 col-auto mx-lg-2 my-lg-2"> Spring </span>
+                <span class="badge bg-pastel-yellow fs-6 p-2 col-auto mx-lg-2 my-lg-2"> Angular </span>
+              </div>
+            </div>
+        </div>
+    </div>
+</div> -->
