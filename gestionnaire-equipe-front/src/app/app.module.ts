@@ -24,6 +24,7 @@ import { RoleService } from './shared/services/role.service';
 import { CompetenceService } from './shared/services/competence.service';
 import { EmployeeService } from './shared/services/employee.service';
 import { TacheService } from './shared/services/tache.service';
+import { NewTaskComponent } from './new-task/new-task.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TacheService } from './shared/services/tache.service';
     TeamComponent,
     TaskComponent,
     DevsOverviewComponent,
+    NewTaskComponent,
   ],
   imports: [
     BrowserModule,

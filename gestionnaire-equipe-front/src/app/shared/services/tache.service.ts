@@ -12,7 +12,7 @@ export class TacheService {
 
   constructor(private http: HttpClient) { }
 
-  getAllTacheActiveByProjetId(id_projet: number): Observable<Tache[]> {
+  getAllTacheByProjetId(id_projet: number): Observable<Tache[]> {
     return this.http.get<Tache[]>(this.ressourceUrl + '/' + id_projet);
   }
 
