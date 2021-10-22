@@ -3,6 +3,8 @@ package gestionnaire.controllers;
 import gestionnaire.model.Employe;
 import gestionnaire.model.Projet;
 import gestionnaire.repository.ProjetRepository;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,9 @@ public class ProjetController {
 
     @Autowired
     ProjetRepository repo;
+
+    private final Log logger = LogFactory.getLog(getClass());
+
 
     @GetMapping()
     public ResponseEntity<List<Projet>> getAllProjet() {
@@ -40,4 +45,22 @@ public class ProjetController {
         return p;
     }
 
+    @PutMapping()
+    public ResponseEntity<Projet> updateProjet (@RequestBody Projet projet)
+    {
+        Projet updatedProjet;
+        if (repo.findById(projet.getId()).isEmpty()){
+            logger.error("Can't update projet. Projet with id = "+projet.getId()+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        try {
+            updatedProjet = repo.save(projet);
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of projet with id = "+projet.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated projet");
+        return new ResponseEntity<>(updatedProjet, HttpStatus.OK);
+    }
 }
