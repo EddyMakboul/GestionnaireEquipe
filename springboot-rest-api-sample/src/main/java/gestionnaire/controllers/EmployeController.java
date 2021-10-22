@@ -3,6 +3,7 @@ package gestionnaire.controllers;
 import gestionnaire.model.Competence;
 import gestionnaire.model.Employe;
 import gestionnaire.model.Projet;
+import gestionnaire.model.Tache;
 import gestionnaire.repository.CompetenceRepository;
 import gestionnaire.repository.EmployeRepository;
 import gestionnaire.repository.ProjetRepository;
@@ -156,6 +157,12 @@ public class EmployeController {
             logger.error("Can't remove competence to employe. Competence with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
+        if (!employeService.employeHasCompetence(id, competence.getId())){
+            logger.error("Can't remove competence to employe. Employe with id = "+id+" doesn't have " +
+                    "competence with id = "+competence.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
         Employe updatedEmploye;
         Employe employe = potentialEmploye.get();
         employe.deleteCompetence(competence);
@@ -209,11 +216,78 @@ public class EmployeController {
             logger.error("Can't remove projet to employe. Projet with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
+        if (!employeService.employeHasProjet(id, projet.getId())){
+            logger.error("Can't remove projet to employe. Employe with id = "+id+" doesn't have " +
+                    "projet with id = "+projet.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
         Employe updatedEmploye;
         Employe employe = potentialEmploye.get();
         employe.deleteProjet(projet);
         try {
             updatedEmploye = employeRepository.save(employe);
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of employee with id = "+employe.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated employe");
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
+    }
+
+    @PutMapping("/addtache/{id}")
+    public ResponseEntity<Employe> updateEmployeAddProjet (@RequestBody Tache tache, @PathVariable Long id)
+    {
+        Optional<Employe> potentialEmploye = employeRepository.findById(id);
+        if (potentialEmploye.isEmpty()){
+            logger.error("Can't add tache to employe. Employe with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (taskRepository.findById(tache.getId()).isEmpty()){
+            logger.error("Can't add tache to employe. Tache with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Employe updatedEmploye;
+        Employe employe = potentialEmploye.get();
+        tache.setEmploye(employe);
+        taskRepository.save(tache);
+        try {
+            updatedEmploye = employeRepository.findById(id).get();
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of employee with id = "+employe.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated employe");
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
+    }
+
+
+    @PutMapping("/removetache/{id}")
+    public ResponseEntity<Employe> updateEmployeRemoveProjet (@RequestBody Tache tache, @PathVariable Long id)
+    {
+        Optional<Employe> potentialEmploye = employeRepository.findById(id);
+        if (potentialEmploye.isEmpty()){
+            logger.error("Can't remove tache to employe. Employe with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (projetRepository.findById(tache.getId()).isEmpty()){
+            logger.error("Can't remove tache to employe. Tache with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (!employeService.employeHasTache(id, tache.getId())){
+            logger.error("Can't remove tache to employe. Employe with id = "+id+" doesn't have " +
+                    "tache with id = "+tache.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+
+        Employe updatedEmploye;
+        Employe employe = potentialEmploye.get();
+        tache.setEmploye(null);
+        taskRepository.save(tache);
+        try {
+            updatedEmploye = employeRepository.findById(id).get();
         } catch (Exception e){
             logger.error(e);
             logger.error("Error during update of employee with id = "+employe.getId());
