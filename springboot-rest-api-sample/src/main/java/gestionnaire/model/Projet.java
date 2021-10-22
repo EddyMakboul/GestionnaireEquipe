@@ -1,6 +1,9 @@
 package gestionnaire.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,6 +37,7 @@ public class Projet implements Serializable {
 
     @OneToMany(mappedBy="projet")
     @OrderBy("nom_tache ASC")
+    @JsonIgnore
     private List<Tache> taches;
 
     public Projet() {

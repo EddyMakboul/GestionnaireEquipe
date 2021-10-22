@@ -23,8 +23,8 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
     this.tacheService.getAllTacheByProjetId(this.projet.id).subscribe(
       data => {
-        this.freeList = data.filter(tache => tache.employee == null && !tache.finished)
-        this.inProgressList = data.filter(tache => tache.employee && !tache.finished)
+        this.freeList = data.filter(tache => tache.employe == null && !tache.finished)
+        this.inProgressList = data.filter(tache => tache.employe && !tache.finished)
         this.doneList = data.filter(tache => tache.finished)
       }
     );

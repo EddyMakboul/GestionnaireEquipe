@@ -46,28 +46,28 @@ public class GestionnaireService {
         competenceRepository.save(competenceC);
         competenceRepository.save(competenceSpring);
 
-        Employe employe1 = populateEmploye(Arrays.asList(competenceC, competenceGP), developpeurRole);
-        Employe employe2 = populateEmploye(List.of(competenceJava), developpeurRole);
-        Employe employe3 = populateEmploye(Arrays.asList(competenceC, competenceGP, competenceScrum), developpeurRole);
-        Employe employe4 = populateEmploye(Arrays.asList(competenceSpring, competenceJava), developpeurRole);
-        Employe employe5 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), developpeurRole);
-        Employe employe6 = populateEmploye(Arrays.asList(competenceC, competenceSpring), developpeurRole);
-        Employe employe7 = populateEmploye(List.of(competenceGP), developpeurRole);
-        Employe employe8 = populateEmploye(Arrays.asList(competenceC, competenceGP, competenceJava, competenceSpring), developpeurRole);
-        Employe employe9 = populateEmploye(Arrays.asList(competenceJava, competenceScrum), developpeurRole);
-        Employe employe10 = populateEmploye(Arrays.asList(competenceScrum, competenceGP, competenceJava), developpeurRole);
+        Employe chef1 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
+        Employe chef2 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
+        Employe chef3 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
+        Employe chef4 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
+        Employe chef5 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
 
-        Employe chef1 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), ChefDeProjetRole);
-        Employe chef2 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), ChefDeProjetRole);
-        Employe chef3 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), ChefDeProjetRole);
-        Employe chef4 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), ChefDeProjetRole);
-        Employe chef5 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), ChefDeProjetRole);
+        Projet projet1 = projetRepository.save(new Projet("Projet 1", "Description 1", chef1));
+        Projet projet2 = projetRepository.save(new Projet("Projet 2", "Description 2", chef2));
+        Projet projet3 = projetRepository.save(new Projet("Projet 3", "Description 3", chef3));
+        Projet projet4 = projetRepository.save(new Projet("Projet 4", "Description 4", chef4));
+        Projet projet5 = projetRepository.save(new Projet("Projet 5", "Description 5", chef5));
 
-        Projet projet1 = populateProjet("Projet 1", "Description 1", Arrays.asList(employe1, employe2, employe3), chef1);
-        Projet projet2 = populateProjet("Projet 2", "Description 2", Arrays.asList(employe4, employe5, employe6), chef2);
-        Projet projet3 = populateProjet("Projet 3", "Description 3", Arrays.asList(employe7, employe8, employe9), chef3);
-        Projet projet4 = populateProjet("Projet 4", "Description 4", Arrays.asList(employe10, employe2, employe5), chef4);
-        Projet projet5 = populateProjet("Projet 5", "Description 5", Arrays.asList(employe1, employe4, employe9), chef5);
+        Employe employe1 = populateEmploye(Arrays.asList(competenceC, competenceGP), Arrays.asList(projet1, projet5), developpeurRole);
+        Employe employe2 = populateEmploye(List.of(competenceJava), Arrays.asList(projet1, projet4), developpeurRole);
+        Employe employe3 = populateEmploye(Arrays.asList(competenceC, competenceGP, competenceScrum), Arrays.asList(projet1), developpeurRole);
+        Employe employe4 = populateEmploye(Arrays.asList(competenceSpring, competenceJava),Arrays.asList(projet2, projet5), developpeurRole);
+        Employe employe5 = populateEmploye(Arrays.asList(competenceScrum, competenceGP),Arrays.asList(projet2, projet4), developpeurRole);
+        Employe employe6 = populateEmploye(Arrays.asList(competenceC, competenceSpring),Arrays.asList(projet2), developpeurRole);
+        Employe employe7 = populateEmploye(List.of(competenceGP),Arrays.asList(projet3), developpeurRole);
+        Employe employe8 = populateEmploye(Arrays.asList(competenceC, competenceGP, competenceJava, competenceSpring), Arrays.asList(projet3), developpeurRole);
+        Employe employe9 = populateEmploye(Arrays.asList(competenceJava, competenceScrum),Arrays.asList(projet3, projet5), developpeurRole);
+        Employe employe10 = populateEmploye(Arrays.asList(competenceScrum, competenceGP, competenceJava),Arrays.asList(projet4), developpeurRole);
 
         taskRepository.save(new Tache("Faire les controllers", "Controller", employe1, projet1));
         taskRepository.save(new Tache("Faire les services", "Services", employe2, projet1));
@@ -86,21 +86,23 @@ public class GestionnaireService {
         taskRepository.save(new Tache("Faire le front des infos des users", "Front des informations sur les utilisateurs", employe9, projet5));
     }
 
-    private Employe populateEmploye(List<Competence> competences, Role role) {
+    private Employe populateEmploye(List<Competence> competences, List<Projet> projets, Role role) {
         Faker faker = new Faker();
         Employe employe = new Employe(faker.name().firstName(), faker.name().lastName(), faker.name().username(), "password", role);
         for (Competence c : competences) {
             employe.addCompetence(c);
         }
+        if (projets != null){
+            for (Projet p : projets) {
+                employe.addProjet(p);
+            }
+        }
         employeRepository.save(employe);
         return employe;
     }
 
-    private Projet populateProjet(String name, String description, List<Employe> employes, Employe chef) {
+    private Projet populateProjet(String name, String description, Employe chef) {
         Projet projet = new Projet(name, description, chef);
-        for (Employe employe : employes) {
-            projet.addEmploye(employe);
-        }
         projetRepository.save(projet);
         return projet;
     }

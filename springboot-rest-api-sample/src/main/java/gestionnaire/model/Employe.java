@@ -50,6 +50,7 @@ public class Employe implements Serializable {
 
     @ManyToMany( cascade={ CascadeType.MERGE })
     @OrderBy("nom_projet ASC")
+    @JsonIgnore
     private List<Projet> projets;
 
     public Employe() {

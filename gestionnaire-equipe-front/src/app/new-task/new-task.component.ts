@@ -27,7 +27,7 @@ export class NewTaskComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.task.employee = new Employee();
+    this.task.employe = new Employee();
     this.activatedRoute.params.subscribe(params => {
       this.projetService.getProjetById(params.id).subscribe(projet => {
         this.projet = projet;
@@ -53,7 +53,7 @@ export class NewTaskComponent implements OnInit {
 
   onSubmit() {
     if (this.taskForm.valid) {
-      this.task.employee = this.projet.employes?.find(employe => employe.id = this.employeControl.value);
+      this.task.employe = this.projet.employes?.find(employe => employe.id = this.employeControl.value);
       this.task.nom_tache = this.nameControl.value;
       this.task.description = this.descrptionControl.value;
       this.task.projet = this.projet;

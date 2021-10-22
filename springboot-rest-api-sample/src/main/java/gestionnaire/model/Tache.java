@@ -21,8 +21,8 @@ public class Tache implements Serializable {
     private String nom_tache;
 
     @Basic
-    @Column(name="decription",nullable = false)
-    private String decription;
+    @Column(name="description",nullable = false)
+    private String description;
 
     @Basic
     @Column(name="finished",nullable = false)
@@ -34,16 +34,15 @@ public class Tache implements Serializable {
 
     @ManyToOne
     @JoinColumn(name="projet")
-    @JsonIgnore
     private Projet projet;
 
     public Tache() {
         super();
     }
 
-    public Tache(String nom_tache, String decription, Employe employe, Projet projet) {
+    public Tache(String nom_tache, String description, Employe employe, Projet projet) {
         this.nom_tache = nom_tache;
-        this.decription = decription;
+        this.description = description;
         this.finished = false;
         this.employe = employe;
         this.projet = projet;
@@ -65,12 +64,12 @@ public class Tache implements Serializable {
         this.nom_tache = nom_tache;
     }
 
-    public String getDecription() {
-        return decription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDecription(String decription) {
-        this.decription = decription;
+    public void setDescription(String decription) {
+        this.description = decription;
     }
 
     public boolean isFinished() {
