@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Projet } from '../shared/model/projet.model';
+import { ProjetService } from '../shared/services/projet.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
-  constructor() { }
+
+  projects: Projet[] = [];
+  constructor(private projectService: ProjetService, private router: Router) { }
 
   ngOnInit(): void {
+    this.projectService.getAllProjets().subscribe(response => {
+      this.projects = response;
+      console.log(this.projects)
+    });
+  }
+
+  goToNewDev(): void {
+    this.router.navigate(['/new-dev']);
+  }
+
+  goToNewProject(): void {
+    this.router.navigate(['/new-project']);
   }
 
 }

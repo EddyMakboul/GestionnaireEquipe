@@ -8,7 +8,7 @@ import { Tache } from '../model/tache.model';
 })
 export class TacheService {
 
-  private ressourceUrl = 'localhost://8080/api/taches'
+  private ressourceUrl = 'http://localhost:8080/api/taches'
 
   constructor(private http: HttpClient) { }
 

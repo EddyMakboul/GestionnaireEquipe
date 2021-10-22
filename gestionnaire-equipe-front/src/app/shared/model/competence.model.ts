@@ -1,10 +1,5 @@
-export class Competence{
-    constructor(
-        public id: number,
-        public nom_competence:string,
-        public niveau:string,
-    )
-    {
-
-    }
+export class Competence {
+    public id: number;
+    public nomCompetence: string;
+    public niveau: string;
 }

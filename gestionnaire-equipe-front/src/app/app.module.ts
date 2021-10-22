@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -18,6 +17,13 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon'
+import { ProjetService } from './shared/services/projet.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RoleService } from './shared/services/role.service';
+import { CompetenceService } from './shared/services/competence.service';
+import { EmployeeService } from './shared/services/employee.service';
+import { TacheService } from './shared/services/tache.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +36,6 @@ import { MatIconModule } from '@angular/material/icon'
     TeamComponent,
     TaskComponent,
     DevsOverviewComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -42,8 +47,11 @@ import { MatIconModule } from '@angular/material/icon'
     MatCardModule,
     MatChipsModule,
     MatIconModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ProjetService, EmployeeService, RoleService, CompetenceService, TacheService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

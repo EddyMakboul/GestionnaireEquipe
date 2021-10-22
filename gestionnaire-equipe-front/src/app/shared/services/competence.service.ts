@@ -8,7 +8,7 @@ import { Competence } from '../model/competence.model';
 })
 export class CompetenceService {
 
-  private ressourceUrl = 'localhost://8080/api/competences'
+  private ressourceUrl = 'http://localhost:8080/api/competences'
 
   constructor(private http: HttpClient) { }
 
