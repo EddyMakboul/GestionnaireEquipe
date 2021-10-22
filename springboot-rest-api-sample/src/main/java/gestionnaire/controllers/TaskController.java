@@ -45,7 +45,7 @@ public class TaskController {
     }
 
     @PutMapping()
-    public ResponseEntity<Tache> updateEmploye (@RequestBody Tache task){
+    public ResponseEntity<Tache> updateTask (@RequestBody Tache task){
         Tache updateTask;
         if (taskRepository.findById(task.getId()).isEmpty()){
             logger.error("Can't update task. Task with id = "+task.getId()+" doesn't exist");
@@ -85,7 +85,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tache> taskFinished (@PathVariable Long id)
+    public ResponseEntity<Tache> tacheFinis (@PathVariable Long id)
     {
         Optional<Tache> tache = taskRepository.findById(id);
         if (tache.isEmpty()){
