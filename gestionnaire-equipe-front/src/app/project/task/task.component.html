@@ -1,29 +1,30 @@
 <div class="row justify-content-end mb-lg-3">
-    <a routerLink='/new-task/{{projet.id}}' routerLinkActive="active" class="col-auto p-0 fs-6 text-muted text-decoration-none d-flex align-items-end">
-        <i class="bi bi-plus fs-5"></i> 
-        <span class=""> Add task </span> 
+    <a routerLink='/new-task/{{projet.id}}' routerLinkActive="active"
+        class="col-auto p-0 fs-6 text-muted text-decoration-none d-flex align-items-end">
+        <i class="bi bi-plus fs-5"></i>
+        <span class=""> Add task </span>
     </a>
 </div>
 
 <div class="row justify-content-between gx-lg-5">
 
     <div id="free-tasks-section" class="col-4">
-      
+
         <div class="row justify-content-start">
             <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-orange rounded py-1">FREE</h4>
         </div>
 
         <div class="row justify-content-start">
             <div *ngFor="let tache of freeList">
-              <div class="card w-100 h-100 my-lg-4 border-0 px-0">
-                  <div class="card-body shadow">
-                      <h5 class="card-title fs-4"{{tache?.nom_tache}}</h5>
-                      <h6 class="card-text mb-2 text-muted">
-                         {{tache?.description}}
-                      </h6>
-                  </div>
-              </div>
-          </div>
+                <div class="card w-100 h-100 my-lg-4 border-0 px-0">
+                    <div class="card-body shadow">
+                        <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
+                        <h6 class="card-text mb-2 text-muted">
+                            {{tache?.description}}
+                        </h6>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -34,17 +35,17 @@
         </div>
 
         <div class="row justify-content-start">
-          <div *ngFor="let tache of freeList">
-            <div class="card w-100 h-100 my-lg-4 border-0 px-0">
-                <div class="card-body shadow">
-                    <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
-                    <h6 class="card-text mb-2 text-muted">
-                       {{tache?.description}}
-                    </h6>
-                    <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+            <div *ngFor="let tache of freeList">
+                <div class="card w-100 h-100 my-lg-4 border-0 px-0">
+                    <div class="card-body shadow">
+                        <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
+                        <h6 class="card-text mb-2 text-muted">
+                            {{tache?.description}}
+                        </h6>
+                        <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
 
     </div>
@@ -57,16 +58,16 @@
 
         <div class="row justify-content-start">
             <div *ngFor="let tache of freeList">
-            <div class="card w-100 h-100 my-lg-4 border-0 px-0">
-                <div class="card-body shadow">
-                    <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
-                    <h6 class="card-text mb-2 text-muted">
-                       {{tache?.description}}
-                    </h6>
-                    <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+                <div class="card w-100 h-100 my-lg-4 border-0 px-0">
+                    <div class="card-body shadow">
+                        <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
+                        <h6 class="card-text mb-2 text-muted">
+                            {{tache?.description}}
+                        </h6>
+                        <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+                    </div>
                 </div>
             </div>
-          </div>
         </div>
 
     </div>
