@@ -62,7 +62,7 @@ public class TaskController {
         return new ResponseEntity<>(updateTask, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/projet/{id}")
     public ResponseEntity<List<Tache>> getTastFromProject(@PathVariable Long id){
         Optional<Projet> projet = projetRepository.findById(id);
         if (projet.isEmpty()){
