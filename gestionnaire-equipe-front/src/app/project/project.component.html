@@ -4,10 +4,10 @@
     </div>
 
     <div class="row justify-content-between mt-lg-4 mx-lg-5 pb-lg-0 border-bottom">
-        <button class="navbar-btn fw-bold col-auto pt-2 pb-3 rounded-top"> Overview </button>
+        <button class="navbar-btn fw-bold col-auto pt-2 pb-3 rounded-top" [routerLink]="['overview']"> Overview </button>
         <div class="col-auto">
-            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top"> Team </button>
-            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top"> Tasks </button>
+            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top" [routerLink]="['team']"> Team </button>
+            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top" [routerLink]="['tasks']"> Tasks </button>
         </div>
     </div>
 

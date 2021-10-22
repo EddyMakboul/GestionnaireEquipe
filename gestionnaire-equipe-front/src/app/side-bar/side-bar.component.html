@@ -3,21 +3,28 @@
         <h1 class="text-white text-center col-12 mt-lg-3">GDX_21</h1>
         <button (click)="switchLogo()" class="btn text-white col-auto mt-lg-5 fw-bold fs-5 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample">
-                <i class="bi bi-chevron-right me-lg-2" *ngIf="!isLogoSwitched"></i> 
-                <i class="bi bi-chevron-down me-lg-2" *ngIf="isLogoSwitched"></i> 
+                <i class="bi bi-chevron-right me-lg-1" *ngIf="!isLogoSwitched"></i> 
+                <i class="bi bi-chevron-down me-lg-1" *ngIf="isLogoSwitched"></i> 
                 <span class="mt-lg-2">Projects</span> 
         </button>
         <div class="collapse" id="collapseExample">
-            <div class="card card-body bg-transparent border-0">
+            <div class="card card-body bg-transparent border-0 p-0">
                 <div class="row justify-content-center">
-                    <ul class="text-white col-8">
-                        <li class="col-12 my-lg-2"> <a>- MCL35</a> </li>
-                        <li class="col-12 my-lg-2"> <a>- W11</a> </li>
-                        <li class="col-12 my-lg-2"> <a>- A521</a> </li>
-                        <li class="col-12 my-lg-2"> <a>- RB.17</a> </li>
+                    <ul class="col-7">
+                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['project/1']">W11</a></li>
+                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['project/1']">RB.17</a></li>
+                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['project/1']">MCL35</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+
+        <div id="adding-links" class="position-absolute bottom-0">
+            <ul class="col-10">
+                <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-plus text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['new-project']">New project</a></li>
+                <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-plus text-white me-lg-1"></i> <a class="text-white mt-lg-2" [routerLink]="['new-dev']">New dev</a></li>
+            </ul>
+        </div>
+
     </div>
 </div>

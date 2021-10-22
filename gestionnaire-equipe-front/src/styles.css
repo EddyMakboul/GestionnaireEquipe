@@ -16,6 +16,10 @@ ul {
     margin-left: 0 !important;
 }
 
+a {
+    text-decoration: none;
+}
+
 .bg-pastel-yellow {
     background-color: rgb(255, 174, 24); 
 }
