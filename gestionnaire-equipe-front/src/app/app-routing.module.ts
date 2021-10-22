@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'overview', pathMatch: 'full' },
       { path: 'overview', component: OverviewComponent },
       { path: 'team', component: TeamComponent },
-      { path: 'task', component: TaskComponent },
+      { path: 'tasks', component: TaskComponent },
       { path: '**', redirectTo: 'overview', pathMatch: 'full' },
     ]
   },

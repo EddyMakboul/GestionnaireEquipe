@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBarComponent implements OnInit {
 
+  isLogoSwitched : boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  switchLogo() {
+      this.isLogoSwitched = !this.isLogoSwitched;
   }
 
 }

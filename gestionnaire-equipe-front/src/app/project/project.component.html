@@ -1,18 +1,18 @@
-<div fxLayout="column" fxFill class="project">
-    <div fxLayout="column" fxLayoutAlign="space-between none" fxFlex="20" class="project-part parent">
-        <h1>RB.17 Status Board</h1>
-
-        <div fxLayout="row" fxLayoutAlign="space-between end" class="buttons">
-            <button mat-button>Overview</button>
-            <div fxLayoutGap="20px" class="button-right">
-                <button mat-button>Team</button>
-                <button mat-button>Taks</button>
-            </div>
-
-        </div>
-
+<div class="m-lg-3 py-lg-3">
+    <div class="my-lg-3 mx-lg-5 d-flex align-items-center">
+        <i class="bi bi-kanban fs-1 mb-4 me-3"></i> <h1 class="fw-bold"> RB.17 Project Status Board </h1> 
     </div>
-    <div fxFlex="80" class="project-part child">
+
+    <div class="row justify-content-between mt-lg-4 mx-lg-5 pb-lg-0 border-bottom">
+        <button class="navbar-btn fw-bold col-auto pt-2 pb-3 rounded-top"> Overview </button>
+        <div class="col-auto">
+            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top"> Team </button>
+            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top"> Tasks </button>
+        </div>
+    </div>
+
+    <div class="row mx-lg-5 px-lg-2 py-lg-2">
         <router-outlet></router-outlet>
     </div>
+
 </div>
