@@ -1,4 +1,6 @@
 <div fxLayout="row" class="task-container">
+
+    <button routerLink='/new-task/{{projet.id}}' routerLinkActive="active">Nouvelle tache</button>
     <div fxFill fxFlex="33" class="new-task-container">
         <h2>Free : 1</h2>
         <div class="card-container">
@@ -39,7 +41,7 @@
         </div>
     </div>
     <div fxFill fxFlex="33" class="new-task-container">
-        <h2>Donne : 3</h2>
+        <h2>Done : 3</h2>
         <div class="card-container">
             <div *ngFor="let tache of doneList">
                 <mat-card class="card">
