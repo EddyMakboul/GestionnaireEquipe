@@ -28,7 +28,7 @@ public class Employe implements Serializable {
     private String prenom;
 
     @Basic
-    @Column(name="login",nullable = true)
+    @Column(name="login",nullable = true, unique = true)
     private String login;
 
     @Basic
@@ -39,7 +39,7 @@ public class Employe implements Serializable {
     @JoinColumn(name = "id_role")
     private Role role;
 
-    @OneToMany(mappedBy="employe")
+    @OneToMany( cascade = { CascadeType.MERGE }, mappedBy="employe")
     @OrderBy("nom_tache ASC")
     @JsonIgnore
     private List<Tache> taches;
@@ -48,7 +48,7 @@ public class Employe implements Serializable {
     @OrderBy("nom_competence ASC")
     private List<Competence> competences;
 
-    @ManyToMany
+    @ManyToMany( cascade={ CascadeType.MERGE })
     @OrderBy("nom_projet ASC")
     private List<Projet> projets;
 
@@ -72,15 +72,12 @@ public class Employe implements Serializable {
     }
 
     public void deleteCompetence(Competence competence){
-        this.competences.remove(competence);
-    }
-
-    public void addTache(Tache tache){
-        this.taches.add(tache);
-    }
-
-    public void deleteTache(Tache tache){
-        this.taches.remove(tache);
+        for (Competence competence1: this.competences){
+            if (competence1.getId() == competence.getId()){
+                this.competences.remove(competence1);
+                break;
+            }
+        }
     }
 
     public void addProjet(Projet projet){
@@ -88,8 +85,12 @@ public class Employe implements Serializable {
     }
 
     public void deleteProjet(Projet projet){
-        this.projets.add(projet);
-    }
+        for (Projet projet1: this.projets){
+            if (projet1.getId() == projet.getId()){
+                this.projets.remove(projet1);
+                break;
+            }
+        }    }
 
     public long getId() {
         return id;
