@@ -1,20 +1,19 @@
-<div fxLayout="column" fxFill class="project">
-    <div fxLayout="column" fxLayoutAlign="space-between none" fxFlex="20" class="project-part parent">
-        <h1>{{project?.nom_projet}} Status Board</h1>
+<div class="m-lg-3 py-lg-3">
+    <div class="my-lg-3 mx-lg-5 d-flex align-items-center">
+        <i class="bi bi-kanban fs-1 mb-4 me-3"></i> <h1 class="fw-bold"> {{project?.nom_projet}} Status Board </h1> 
+    </div>
 
-        <div fxLayout="row" fxLayoutAlign="space-between end" class="buttons">
-            <button mat-button (click)="goToOverview()">Overview</button>
-            <div fxLayoutGap="20px" class="button-right">
-                <button mat-button (click)="goToTeam()">Team</button>
-                <button mat-button (click)="goToTask()">Taks</button>
-            </div>
-
+    <div class="row justify-content-between mt-lg-4 mx-lg-5 pb-lg-0 border-bottom">
+        <button class="navbar-btn fw-bold col-auto pt-2 pb-3 rounded-top" (click)="goToOverview()"> Overview </button>
+        <div class="col-auto">
+            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top" (click)="goToTeam()"> Team </button>
+            <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top" (click)="goToTask()"> Tasks </button>
         </div>
-
     </div>
     <div fxFlex="80" class="project-part child">
         <app-team *ngIf="view==3" [projet]="project"></app-team>
         <app-task *ngIf="view==2" [projet]="project"></app-task>
         <app-overview *ngIf="view==1" [projet]="project"></app-overview>
+
     </div>
 </div>

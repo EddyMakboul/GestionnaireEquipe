@@ -1,24 +1,22 @@
-<h1>Team members</h1>
+<div *ngFor="let employe of projet.employes">
 
-<div class="card-container">
+<h1 class="fs-2 fw-bold mt-lg-3"> Team members </h1>
 
-    <div *ngFor="let employe of projet.employes">
+<div id="card-container">
+    
+    <div class="row justify-content-start mt-lg-3 gx-lg-1">
 
-
-        <mat-card class="card">
-            <mat-card-header>
-                <mat-card-title>{{employe.nom}} {{employe.prenom}}</mat-card-title>
-                <button mat-icon-button (click)="removeFromTeam(employe)" color="primary">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-chip-list aria-label="list compétence">
-                    <div *ngFor="let comp of employe.competences">
-                        <mat-chip class="chip"> {{comp.nomCompetence}}</mat-chip>
-                    </div>
-                </mat-chip-list>
-            </mat-card-content>
-        </mat-card>
+        <div class="card w-25 mx-lg-2 my-lg-4 shadow border-0">
+            <div class="card-body">
+              <h5 class="card-title fs-4">{{employe.prenom}} {{employe.nom}}</h5>
+              <button (click)="removeFromTeam(employe)" color="btn btn-primary">
+              <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
+              <div id="skills-section" class="row justify-content-center mt-lg-3" *ngFor="let comp of employe.competences">
+                <span class="badge bg-pastel-yellow fs-6 p-2 col-auto mx-lg-2 my-lg-2">{{comp.nomCompetence}}</span>
+              </div>
+            </div>
+        </div>
+      
+        
     </div>
 </div>

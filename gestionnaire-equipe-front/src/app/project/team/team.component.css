@@ -1,14 +1,7 @@
-.card-container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card {
-    height: 200px;
-    border: solid;
-}
-
-.chip {
-    background-color: rgb(116, 116, 156);
+#card-container {
+    height: 55vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color:grey lightgrey;
+    scrollbar-width: thin;
 }

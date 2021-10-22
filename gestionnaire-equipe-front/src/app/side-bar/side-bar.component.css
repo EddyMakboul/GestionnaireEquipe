@@ -1,0 +1,10 @@
+#side-bar {
+    background: hsla(227, 100%, 50%, 1);
+    background: linear-gradient(90deg, hsla(227, 100%, 50%, 1) 0%, hsla(198, 100%, 50%, 1) 100%);
+    background: -moz-linear-gradient(90deg, hsla(227, 100%, 50%, 1) 0%, hsla(198, 100%, 50%, 1) 100%);
+    background: -webkit-linear-gradient(90deg, hsla(227, 100%, 50%, 1) 0%, hsla(198, 100%, 50%, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0037FF", endColorstr="#00B2FF", GradientType=1 );
+    height: 100vh;
+    position: fixed;
+    width: 15vw;
+}

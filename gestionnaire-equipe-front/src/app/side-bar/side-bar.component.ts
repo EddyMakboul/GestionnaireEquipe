@@ -10,6 +10,7 @@ import { ProjetService } from '../shared/services/projet.service';
 })
 export class SideBarComponent implements OnInit {
 
+  isLogoSwitched : boolean = false;
 
   projects: Projet[] = [];
   constructor(private projectService: ProjetService, private router: Router) { }
@@ -27,6 +28,10 @@ export class SideBarComponent implements OnInit {
 
   goToNewProject(): void {
     this.router.navigate(['/new-project']);
+  }
+
+  switchLogo() {
+      this.isLogoSwitched = !this.isLogoSwitched;
   }
 
 }

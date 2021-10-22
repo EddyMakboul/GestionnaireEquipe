@@ -1,3 +1,10 @@
-.project-part {
-    margin: 10px;
+.navbar-btn {
+    background-color: transparent;
+    border: none;
+    transition: 0.2s;
+}
+
+.navbar-btn:hover {
+    background-color: rgb(236, 234, 234);
+    transition: 0.2s;
 }

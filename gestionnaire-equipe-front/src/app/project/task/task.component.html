@@ -1,61 +1,74 @@
-<div fxLayout="row" class="task-container">
+<div class="row justify-content-end mb-lg-3">
+    <a routerLink='/new-task/{{projet.id}}' routerLinkActive="active" class="col-auto p-0 fs-6 text-muted text-decoration-none d-flex align-items-end">
+        <i class="bi bi-plus fs-5"></i> 
+        <span class=""> Add task </span> 
+    </a>
+</div>
 
-    <button routerLink='/new-task/{{projet.id}}' routerLinkActive="active">Nouvelle tache</button>
-    <div fxFill fxFlex="33" class="new-task-container">
-        <h2>Free : 1</h2>
-        <div class="card-container">
+<div class="row justify-content-between gx-lg-5">
+
+    <div id="free-tasks-section" class="col-4">
+      
+        <div class="row justify-content-start">
+            <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-orange rounded py-1">FREE</h4>
+        </div>
+
+        <div class="row justify-content-start">
             <div *ngFor="let tache of freeList">
-                <mat-card class="card">
-                    <mat-card-header>
-                        <mat-card-title>{{tache?.nom_tache}}</mat-card-title>
-                        <button mat-icon-button color="primary">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>{{tache?.description}}</p>
-                        <p>assigned to: {{tache?.employe?.nom}}.{{tache?.employe?.prenom}}</p>
-                    </mat-card-content>
-                </mat-card>
+              <div class="card w-100 h-100 my-lg-4 border-0 px-0">
+                  <div class="card-body shadow">
+                      <h5 class="card-title fs-4"{{tache?.nom_tache}}</h5>
+                      <h6 class="card-text mb-2 text-muted">
+                         {{tache?.description}}
+                      </h6>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </div>
+
+    <div id="in-progress-tasks-section" class="col-4">
+
+        <div class="row justify-content-start">
+            <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-yellow rounded py-1">IN PROGRESS</h4>
+        </div>
+
+        <div class="row justify-content-start">
+          <div *ngFor="let tache of freeList">
+            <div class="card w-100 h-100 my-lg-4 border-0 px-0">
+                <div class="card-body shadow">
+                    <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
+                    <h6 class="card-text mb-2 text-muted">
+                       {{tache?.description}}
+                    </h6>
+                    <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+                </div>
             </div>
+          </div>
         </div>
 
     </div>
-    <div fxFill fxFlex="33" class="progress-task-container">
-        <h2>In Progress : 2</h2>
-        <div class="card-container">
-            <div *ngFor="let tache of inProgressList">
-                <mat-card class="card">
-                    <mat-card-header>
-                        <mat-card-title>{{tache?.nom_tache}}</mat-card-title>
-                        <button mat-icon-button color="primary">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>{{tache?.description}}</p>
-                        <p>assigned to: {{tache?.employe?.nom}}.{{tache?.employe?.prenom}}</p>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+
+    <div id="in-progress-tasks-section" class="col-4">
+
+        <div class="row justify-content-start">
+            <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-green rounded py-1">DONE</h4>
         </div>
-    </div>
-    <div fxFill fxFlex="33" class="new-task-container">
-        <h2>Done : 3</h2>
-        <div class="card-container">
-            <div *ngFor="let tache of doneList">
-                <mat-card class="card">
-                    <mat-card-header>
-                        <mat-card-title>{{tache?.nom_tache}}</mat-card-title>
-                        <button mat-icon-button color="primary">
-                            <mat-icon>close</mat-icon>
-                        </button>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <p>{{tache?.description}}</p>
-                        <p>assigned to: {{tache?.employe?.nom}}.{{tache?.employe?.prenom}}</p>
-                    </mat-card-content>
-                </mat-card>
+
+        <div class="row justify-content-start">
+            <div *ngFor="let tache of freeList">
+            <div class="card w-100 h-100 my-lg-4 border-0 px-0">
+                <div class="card-body shadow">
+                    <h5 class="card-title fs-4">{{tache?.nom_tache}}</h5>
+                    <h6 class="card-text mb-2 text-muted">
+                       {{tache?.description}}
+                    </h6>
+                    <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+                </div>
             </div>
+          </div>
         </div>
+
     </div>
+
+</div>

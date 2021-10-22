@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'devs-overview', component: DevsOverviewComponent },
   { path: 'new-dev', component: NewDevComponent },
   { path: 'new-project', component: NewProjectComponent },
+
   { path: 'project/:id', component: ProjectComponent },
   { path: 'new-task/:id', component: NewTaskComponent },
   { path: '**', redirectTo: 'devs-overview', pathMatch: 'full' },

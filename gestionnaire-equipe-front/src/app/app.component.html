@@ -1,8 +1,9 @@
-<div fxLayout="row" class="page">
-    <div fxFlex="20" class="side-nav">
+<div id="page" class="row">
+    <div id="side-bar-nav" class="col-2">
         <app-side-bar></app-side-bar>
     </div>
-    <div fxFlex="80" class="main-containt">
+
+    <div id="main-content" class="col-9 px-0">
         <router-outlet></router-outlet>
     </div>
 </div>
