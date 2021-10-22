@@ -2,8 +2,11 @@ package gestionnaire.controllers;
 
 import gestionnaire.model.Competence;
 import gestionnaire.model.Employe;
+import gestionnaire.model.Projet;
 import gestionnaire.repository.CompetenceRepository;
 import gestionnaire.repository.EmployeRepository;
+import gestionnaire.repository.ProjetRepository;
+import gestionnaire.repository.TaskRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,12 @@ public class EmployeController {
 
     @Autowired
     CompetenceRepository competenceRepository;
+
+    @Autowired
+    ProjetRepository projetRepository;
+
+    @Autowired
+    TaskRepository taskRepository;
 
     @GetMapping()
     public ResponseEntity<List<Employe>> findAllEmployes ()
@@ -156,4 +165,58 @@ public class EmployeController {
         logger.info("Return updated employe");
         return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
     }
+
+    @PutMapping("/addprojet/{id}")
+    public ResponseEntity<Employe> updateEmployeAddProjet (@RequestBody Projet projet, @PathVariable Long id)
+    {
+        Optional<Employe> potentialEmploye = employeRepository.findById(id);
+        if (potentialEmploye.isEmpty()){
+            logger.error("Can't add projet to employe. Employe with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (projetRepository.findById(projet.getId()).isEmpty()){
+            logger.error("Can't add projet to employe. Projet with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Employe updatedEmploye;
+        Employe employe = potentialEmploye.get();
+        employe.addProjet(projet);
+        try {
+            updatedEmploye = employeRepository.save(employe);
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of employee with id = "+employe.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated employe");
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
+    }
+
+
+    @PutMapping("/removeprojet/{id}")
+    public ResponseEntity<Employe> updateEmployeRemoveProjet (@RequestBody Projet projet, @PathVariable Long id)
+    {
+        Optional<Employe> potentialEmploye = employeRepository.findById(id);
+        if (potentialEmploye.isEmpty()){
+            logger.error("Can't remove projet to employe. Employe with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        if (projetRepository.findById(projet.getId()).isEmpty()){
+            logger.error("Can't remove projet to employe. Projet with id = "+id+" doesn't exist");
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        Employe updatedEmploye;
+        Employe employe = potentialEmploye.get();
+        employe.deleteProjet(projet);
+        try {
+            updatedEmploye = employeRepository.save(employe);
+        } catch (Exception e){
+            logger.error(e);
+            logger.error("Error during update of employee with id = "+employe.getId());
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+        logger.info("Return updated employe");
+        return new ResponseEntity<>(updatedEmploye, HttpStatus.OK);
+    }
+
 }
