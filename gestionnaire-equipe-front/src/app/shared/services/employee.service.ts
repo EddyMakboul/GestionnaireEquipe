@@ -50,4 +50,8 @@ export class EmployeeService {
     return this.http.put(this.ressourceUrl + '/addprojet/' + id_employe, projet);
   }
 
+  getAllChef(): Observable<Employee[]> {
+    return this.http.get<Employee[]>(this.ressourceUrl + '/chef');
+  }
+
 }

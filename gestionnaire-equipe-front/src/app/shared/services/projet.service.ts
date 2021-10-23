@@ -41,8 +41,4 @@ export class ProjetService {
     return this.http.post(this.ressourceUrl + '/' + id_projet, employee);
   }
 
-  updateChefDeProjet(employee: Employee, id_projet: number): Observable<any> {
-    return this.http.post(this.ressourceUrl + '/' + id_projet, employee);
-  }
-
 }

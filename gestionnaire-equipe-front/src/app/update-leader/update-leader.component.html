@@ -1,0 +1,16 @@
+<h1>Change Leader</h1>
+<h2>Actual Leader: {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}</h2>
+
+<div class="new-dev-form">
+    <form novalidate [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Leader</label>
+            <select class="form-control" formControlName="chef" required>
+                <option *ngFor="let l of leaders" [value]="l.id">{{l.prenom}} {{l.nom}}</option>
+
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

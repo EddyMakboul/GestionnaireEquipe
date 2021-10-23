@@ -6,6 +6,7 @@ import { NewMemberComponent } from './new-member/new-member.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { ProjectComponent } from './project/project.component';
+import { UpdateLeaderComponent } from './update-leader/update-leader.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'new-dev', component: NewDevComponent },
   { path: 'new-project', component: NewProjectComponent },
   { path: 'new-member/:id', component: NewMemberComponent },
+  { path: 'update-leader/:id', component: UpdateLeaderComponent },
   { path: 'project/:id', component: ProjectComponent },
   { path: 'new-task/:id', component: NewTaskComponent },
   { path: '**', redirectTo: 'devs-overview', pathMatch: 'full' },

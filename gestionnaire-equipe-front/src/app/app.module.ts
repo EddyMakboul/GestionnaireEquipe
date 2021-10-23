@@ -26,6 +26,7 @@ import { EmployeeService } from './shared/services/employee.service';
 import { TacheService } from './shared/services/tache.service';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewMemberComponent } from './new-member/new-member.component';
+import { UpdateLeaderComponent } from './update-leader/update-leader.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { NewMemberComponent } from './new-member/new-member.component';
     DevsOverviewComponent,
     NewTaskComponent,
     NewMemberComponent,
+    UpdateLeaderComponent,
   ],
   imports: [
     BrowserModule,
