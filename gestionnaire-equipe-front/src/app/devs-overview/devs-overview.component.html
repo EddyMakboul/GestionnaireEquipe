@@ -1,4 +1,4 @@
-<div class="employe-container">
+<!-- <div class="employe-container">
     <div *ngFor="let employe of employes">
         <mat-card class="card">
             <mat-card-header>
@@ -16,4 +16,30 @@
             </mat-card-content>
         </mat-card>
     </div>
+</div> -->
+
+<div class="py-lg-3 px-lg-4">
+    <h1 class="fs-2 fw-bold mt-lg-3"> Devs overview </h1>
+    <div id="card-container">
+        <div class="row justify-content-start mt-lg-3 gx-lg-1">
+          <div *ngFor="let employe of employes" class="card w-25 mx-lg-2 my-lg-4 shadow border-0 h-auto">
+            <div class="card-body">
+              <div class="card-title row justify-content-between d-flex align-items-center">
+                <h5 class="fs-4 col-auto">{{employe.prenom}} {{employe.nom}}</h5>
+              </div>
+              <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
+              <div id="skills-section" class="row justify-content-start mt-lg-2">
+                <div *ngFor="let comp of employe.competences" class="col-auto mx-lg-2 my-lg-2 px-0">
+                  <span *ngIf="comp.niveau === 'Moyen'" class="badge bg-pastel-blue fs-6 p-2"> {{comp.nomCompetence}} </span>
+                  <span *ngIf="comp.niveau === 'Bon'" class="badge bg-pastel-purple fs-6 p-2"> {{comp.nomCompetence}} </span>
+                  <span *ngIf="comp.niveau === 'Expert'" class="badge bg-pastel-red fs-6 p-2"> {{comp.nomCompetence}} </span>
+                </div>
+              </div>
+              <button class="btn btn-outline-danger mt-3 col-12" (click)="delete(employe.id)">DELETE</button>
+            </div>
+          </div>
+        </div>
+    </div>
 </div>
+
+
