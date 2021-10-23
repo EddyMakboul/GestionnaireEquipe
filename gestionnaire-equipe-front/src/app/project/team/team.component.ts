@@ -18,7 +18,6 @@ export class TeamComponent implements OnInit {
   constructor(private projetService: ProjetService, private employeService: EmployeeService) { }
 
   ngOnInit(): void {
-    console.log(this.projet)
   }
 
   removeFromTeam(employe: Employee) {
