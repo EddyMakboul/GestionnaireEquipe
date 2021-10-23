@@ -15,7 +15,7 @@ export class ProjectComponent implements OnInit {
 
   project: Projet;
   id: number;
-  view: number = 1;
+  view: number;
   taches: Tache[];
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -24,6 +24,9 @@ export class ProjectComponent implements OnInit {
     private tacheService: TacheService) { }
 
   ngOnInit(): void {
+    if (this.view == null || undefined) {
+      this.view = 1;
+    }
     this.getProjet();
   }
 

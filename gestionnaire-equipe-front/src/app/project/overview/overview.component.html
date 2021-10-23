@@ -1,6 +1,13 @@
 <div class="py-lg-3">
-    <h1 class="fs-2 fw-bold">RB.17</h1>
+    <h1 class="fs-2 fw-bold">{{projet?.nom_projet}}</h1>
     <p class="fs-5 lh-base">
-       {{projet?.description}}
+        {{projet?.description}}
     </p>
+
+    <h1 class="fs-2 fw-bold">Project Leader</h1>
+    <p class="fs-5 lh-base">
+        {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}
+    </p>
+    <a routerLink='/update-leader/{{projet.id}}' routerLinkActive="active"><i class="bi bi-pencil"></i></a>
+
 </div>

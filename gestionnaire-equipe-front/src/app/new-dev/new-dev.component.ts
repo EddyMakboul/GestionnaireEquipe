@@ -50,7 +50,6 @@ export class NewDevComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.roleControl.value)
     if (this.devForm.valid) {
       console.log("Form Submitted!");
       this.roleService.findById(this.roleControl.value).subscribe(
