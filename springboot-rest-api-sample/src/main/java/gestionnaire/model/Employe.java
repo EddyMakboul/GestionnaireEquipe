@@ -39,17 +39,17 @@ public class Employe implements Serializable {
     @JoinColumn(name = "id_role")
     private Role role;
 
-    @OneToMany( cascade = { CascadeType.MERGE }, mappedBy="employe")
-    @OrderBy("nom_tache ASC")
+    @OneToMany(mappedBy="employe")
+    @OrderBy("nom_tache DESC")
     @JsonIgnore
     private List<Tache> taches;
 
     @ManyToMany
-    @OrderBy("nom_competence ASC")
+    @OrderBy("nom_competence DESC")
     private List<Competence> competences;
 
-    @ManyToMany( cascade={ CascadeType.MERGE })
-    @OrderBy("nom_projet ASC")
+    @ManyToMany
+    @OrderBy("nom_projet DESC")
     @JsonIgnore
     private List<Projet> projets;
 
