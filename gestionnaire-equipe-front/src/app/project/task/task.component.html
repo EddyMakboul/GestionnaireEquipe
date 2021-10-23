@@ -23,6 +23,8 @@
                         <h6 class="card-text mb-2 text-muted">
                             {{tache?.description}}
                         </h6>
+                        <a routerLink='/update-task/{{tache.id}}' routerLinkActive="active"><i
+                                class="bi bi-pencil"></i></a>
                     </div>
                 </div>
             </div>
@@ -47,6 +49,8 @@
                         <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
                         <input class="form-check-input" type="checkbox" [ngModel]="tache?.finished"
                             id="flexCheckDisabled" (click)="clicked(tache.id,true)">
+                        <a routerLink='/update-task/{{tache.id}}' routerLinkActive="active"><i
+                                class="bi bi-pencil"></i></a>
                     </div>
                 </div>
             </div>
@@ -73,6 +77,8 @@
                         <a href="#" class="card-link">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
                         <input class="form-check-input" type="checkbox" [ngModel]="tache?.finished"
                             id="flexCheckDisabled" (click)="clicked(tache.id,false)">
+                        <a routerLink='/update-task/{{tache.id}}' routerLinkActive="active"><i
+                                class="bi bi-pencil"></i></a>
                     </div>
                 </div>
             </div>

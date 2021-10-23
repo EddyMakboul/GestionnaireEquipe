@@ -1,0 +1,24 @@
+<h1>Update Task</h1>
+
+<div class="new-task-form">
+    <form novalidate *ngIf="tache" [formGroup]="updateTaskForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>name</label>
+            <input type="name" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label>description</label>
+            <textarea type="description" class="form-control" formControlName="description"></textarea>
+        </div>
+        <div class="form-group">
+            <label>Assigned to</label>
+            <select class="form-control" formControlName="employe">
+                <option [value]=""></option>
+                <option *ngFor="let e of tache?.projet?.employes" [value]="e.id">{{e?.prenom}} {{e?.nom}}</option>
+
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

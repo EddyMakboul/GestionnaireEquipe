@@ -27,6 +27,7 @@ import { TacheService } from './shared/services/tache.service';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewMemberComponent } from './new-member/new-member.component';
 import { UpdateLeaderComponent } from './update-leader/update-leader.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { UpdateLeaderComponent } from './update-leader/update-leader.component';
     NewTaskComponent,
     NewMemberComponent,
     UpdateLeaderComponent,
+    UpdateTaskComponent,
   ],
   imports: [
     BrowserModule,

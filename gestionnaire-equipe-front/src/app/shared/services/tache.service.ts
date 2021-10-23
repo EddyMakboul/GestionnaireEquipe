@@ -16,6 +16,10 @@ export class TacheService {
     return this.http.get<Tache[]>(this.ressourceUrl + '/projet/' + id_projet);
   }
 
+  getTacheById(id_projet: number): Observable<Tache> {
+    return this.http.get<Tache>(this.ressourceUrl + '/' + id_projet);
+  }
+
   create(tache: Tache): Observable<Tache> {
     return this.http.post<Tache>(this.ressourceUrl, tache);
   }
