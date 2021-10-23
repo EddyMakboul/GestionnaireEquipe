@@ -8,7 +8,7 @@
 
 <div class="row justify-content-between gx-lg-5">
 
-    <div id="free-tasks-section" class="col-4 border rounded pt-2">
+    <div id="free-tasks-section" class="col-4 border rounded-start pt-2">
 
         <div class="row justify-content-start">
             <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-orange rounded py-1">FREE</h4>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div id="in-progress-tasks-section" class="col-4 border rounded pt-2">
+    <div id="in-progress-tasks-section" class="col-4 border-top border-bottom pt-2">
 
         <div class="row justify-content-start">
             <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-yellow rounded py-1">IN PROGRESS</h4>
@@ -41,7 +41,7 @@
                     <h6 class="card-text mb-2 text-muted">{{tache?.description}}</h6>
                     <div class="footer row justify-content-between d-flex align-items-center mt-3 px-2">
                         <a href="#" class="card-link me-2 col-auto">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
-                        <button class="btn btn-outline-success float-end col-auto"
+                        <button class="btn btn-success float-end col-auto"
                         id="task-done-btn" (click)="clicked(tache.id,true)"> COMPLETE </button>
                     </div>
 
@@ -51,7 +51,7 @@
 
     </div>
 
-    <div id="in-progress-tasks-section" class="col-4 border rounded pt-2">
+    <div id="in-progress-tasks-section" class="col-4 border rounded-end pt-2">
 
         <div class="row justify-content-start">
             <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-green rounded py-1">DONE</h4>
