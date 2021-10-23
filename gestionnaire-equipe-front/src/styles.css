@@ -5,6 +5,8 @@
 
 * {
     font-family: 'Kanit', sans-serif;
+    scrollbar-color:lightgrey whitesmoke;
+    scrollbar-width: thin;
 }
 
 body {
@@ -44,3 +46,16 @@ a {
     background-color: rgb(254, 255, 214); 
 }
 
+::-webkit-scrollbar {
+    height: 12px;
+    width: 8px;
+    background: lightgrey;
+}
+
+::-webkit-scrollbar-thumb {
+    background: grey;
+}
+
+::-webkit-scrollbar-corner {
+    background: lightgrey;
+}

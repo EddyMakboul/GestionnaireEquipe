@@ -11,3 +11,13 @@
     height: 150px;
     width: 200px;
 }
+
+.task-container {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* #task-done-btn {
+    border: 0;
+    background-color: transparent;
+} */
