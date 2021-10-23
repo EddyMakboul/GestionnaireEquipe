@@ -1,17 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Projet } from 'src/app/shared/model/projet.model';
 import { Tache } from 'src/app/shared/model/tache.model';
 import { TacheService } from 'src/app/shared/services/tache.service';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.css']
 })
-export class TaskComponent implements OnInit {
+export class TaskComponent implements OnInit, OnChanges {
 
   @Input() projet: Projet;
+  @Input() taches: Tache[];
+
+  @Output() projetEventEmiter = new EventEmitter<void>();
 
   freeList: Tache[];
   inProgressList: Tache[];
@@ -20,14 +22,30 @@ export class TaskComponent implements OnInit {
 
   constructor(private tacheService: TacheService) { }
 
+
   ngOnInit(): void {
-    this.tacheService.getAllTacheByProjetId(this.projet.id).subscribe(
-      data => {
-        this.freeList = data.filter(tache => tache.employe == null && !tache.finished)
-        this.inProgressList = data.filter(tache => tache.employe && !tache.finished)
-        this.doneList = data.filter(tache => tache.finished)
+    this.parseTaches(this.taches);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    let change = changes['taches'];
+    if (change != undefined)
+      this.parseTaches(change.currentValue)
+  }
+
+  parseTaches(taches: Tache[]): void {
+    this.freeList = this.taches.filter(tache => tache.employe == null && !tache.finished)
+    this.inProgressList = this.taches.filter(tache => tache.employe && !tache.finished)
+    this.doneList = this.taches.filter(tache => tache.finished)
+  }
+
+  clicked(tache_id: number, finished: boolean) {
+    this.tacheService.finishedtache(tache_id, finished).subscribe(
+      response => {
+        this.projetEventEmiter.emit();
       }
-    );
+    )
+
   }
 
 }

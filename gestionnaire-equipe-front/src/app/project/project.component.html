@@ -13,7 +13,7 @@
     </div>
     <div class="row mx-lg-5 px-lg-2 py-lg-2">
         <app-team *ngIf="view==3" [projet]="project" (projetEventEmiter)="updateProjet()"></app-team>
-        <app-task *ngIf="view==2" [projet]="project"></app-task>
+        <app-task *ngIf="view==2" [projet]="project" [taches]="taches" (projetEventEmiter)="updateProjet()"></app-task>
         <app-overview *ngIf="view==1" [projet]="project"></app-overview>
 
     </div>

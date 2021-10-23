@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../shared/model/employee.model';
 import { Projet } from '../shared/model/projet.model';
 import { Tache } from '../shared/model/tache.model';
@@ -24,7 +24,8 @@ export class NewTaskComponent implements OnInit {
   task: Tache = new Tache();
   constructor(private projetService: ProjetService,
     private taskService: TacheService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.task.employe = new Employee();
@@ -41,7 +42,7 @@ export class NewTaskComponent implements OnInit {
   createFormControls(): void {
     this.descrptionControl = new FormControl("", Validators.required);
     this.nameControl = new FormControl("", Validators.required);
-    this.employeControl = new FormControl("", Validators.required);
+    this.employeControl = new FormControl("",);
   }
   createForm() {
     this.taskForm = new FormGroup({
@@ -61,6 +62,7 @@ export class NewTaskComponent implements OnInit {
       console.log(this.task)
         ; this.taskService.create(this.task).subscribe(
           response => {
+            this.router.navigate(['/project/', this.projet.id])
           }
         )
     }

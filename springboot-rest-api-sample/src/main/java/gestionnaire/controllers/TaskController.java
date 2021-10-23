@@ -85,7 +85,7 @@ public class TaskController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Tache> tacheFinis (@PathVariable Long id)
+    public ResponseEntity<Tache> updateStatusTache	 (@PathVariable Long id,@RequestBody Boolean finished)
     {
         Optional<Tache> tache = taskRepository.findById(id);
         if (tache.isEmpty()){
@@ -94,7 +94,7 @@ public class TaskController {
         }
         Tache updatedTache;
         Tache tache1 = tache.get();
-        tache1.setFinished(true);
+        tache1.setFinished(finished);
         try {
             updatedTache = taskRepository.save(tache1);
         } catch (Exception e){
@@ -105,5 +105,6 @@ public class TaskController {
         logger.info("Return tache id = "+id);
         return new ResponseEntity<>(updatedTache, HttpStatus.OK);
     }
+    
 
 }

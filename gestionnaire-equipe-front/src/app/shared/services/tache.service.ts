@@ -13,7 +13,7 @@ export class TacheService {
   constructor(private http: HttpClient) { }
 
   getAllTacheByProjetId(id_projet: number): Observable<Tache[]> {
-    return this.http.get<Tache[]>(this.ressourceUrl + '/' + id_projet);
+    return this.http.get<Tache[]>(this.ressourceUrl + '/projet/' + id_projet);
   }
 
   create(tache: Tache): Observable<Tache> {
@@ -28,8 +28,8 @@ export class TacheService {
     return this.http.delete(this.ressourceUrl + '/' + id_tache);
   }
 
-  finishedtache(id_tache: number): Observable<any> {
-    return this.http.post(this.ressourceUrl + '/finished', id_tache);
+  finishedtache(id_tache: number, finished: boolean): Observable<any> {
+    return this.http.put(this.ressourceUrl + '/' + id_tache, finished);
   }
 
 }
