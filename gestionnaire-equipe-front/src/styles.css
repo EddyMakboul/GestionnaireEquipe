@@ -22,16 +22,16 @@ a {
     text-decoration: none;
 }
 
-.bg-pastel-yellow {
-    background-color: rgb(255, 174, 24); 
+.bg-pastel-blue {
+    background-color: rgb(51, 207, 255); 
 }
 
-.bg-pastel-orange {
-    background-color: rgb(255, 70, 24); 
+.bg-pastel-purple {
+    background-color: rgb(213, 59, 252); 
 }
 
 .bg-pastel-red {
-    background-color: rgb(255, 24, 24); 
+    background-color: rgb(250, 64, 64); 
 }
 
 .bg-light-pastel-green {

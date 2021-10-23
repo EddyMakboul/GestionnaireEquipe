@@ -1,6 +1,6 @@
 #card-container {
     height: 55vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     scrollbar-color:grey lightgrey;
     scrollbar-width: thin;
