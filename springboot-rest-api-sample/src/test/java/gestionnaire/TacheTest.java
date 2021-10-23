@@ -6,6 +6,7 @@ import gestionnaire.model.Tache;
 import gestionnaire.repository.*;
 import gestionnaire.service.EmployeService;
 import gestionnaire.service.ProjetService;
+import gestionnaire.service.TacheService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,6 +28,9 @@ public class TacheTest {
     ProjetService projetService;
 
     @Autowired
+    TacheService tacheService;
+
+    @Autowired
     TaskRepository taskRepository;
 
     @Autowired
@@ -34,13 +38,7 @@ public class TacheTest {
 
     @BeforeEach
     public void setUp(){
-        List<Tache> taches = taskRepository.findAll();
-        for (Tache tache: taches){
-            tache.setEmploye(null);
-            tache.setProjet(null);
-            taskRepository.save(tache);
-        }
-        taskRepository.deleteAll();
+        tacheService.deleteAllTask();
     }
 
     public Tache createTask(){
