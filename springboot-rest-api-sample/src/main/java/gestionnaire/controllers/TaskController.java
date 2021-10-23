@@ -41,7 +41,14 @@ public class TaskController {
     @DeleteMapping()
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(@PathVariable long id){
-        taskRepository.deleteById(id);
+        Optional<Tache> potentialTache = taskRepository.findById(id);
+        if (potentialTache.isPresent()){
+            Tache tache = potentialTache.get();
+            tache.setEmploye(null);
+            tache.setProjet(null);
+            taskRepository.save(tache);
+            taskRepository.deleteById(id);
+        }
     }
 
     @PutMapping()
