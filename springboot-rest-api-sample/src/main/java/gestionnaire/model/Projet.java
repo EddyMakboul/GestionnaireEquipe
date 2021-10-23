@@ -31,12 +31,12 @@ public class Projet implements Serializable {
     @OneToOne
     private Employe chef_projet;
 
-    @ManyToMany( cascade={ CascadeType.MERGE },  mappedBy="projets")
-    @OrderBy("nom ASC")
+    @ManyToMany(mappedBy="projets")
+    @OrderBy("nom DESC")
     private List<Employe> employes;
 
     @OneToMany(mappedBy="projet")
-    @OrderBy("nom_tache ASC")
+    @OrderBy("nom_tache DESC")
     @JsonIgnore
     private List<Tache> taches;
 
