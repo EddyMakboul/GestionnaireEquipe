@@ -1,28 +1,43 @@
 <div id="side-bar">
     <div class="row justify-content-center px-lg-3">
-        <h1 class="text-white text-center col-12 mt-lg-3">GDX_21</h1>
-        <button (click)="switchLogo()" class="btn text-white col-auto mt-lg-5 fw-bold fs-5 d-flex align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                aria-expanded="false" aria-controls="collapseExample">
-                <i class="bi bi-chevron-right me-lg-1" *ngIf="!isLogoSwitched"></i> 
-                <i class="bi bi-chevron-down me-lg-1" *ngIf="isLogoSwitched"></i> 
-                <span class="mt-lg-2">Projects</span> 
+        <a class="fs-1 text-white text-center col-12 mt-lg-3" [routerLink]="['devs-overview']">GDX_21</a>
+        <button (click)="switchLogo()" class="btn text-white col-auto mt-lg-5 fw-bold fs-5 d-flex align-items-center"
+            type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+            aria-controls="collapseExample">
+            <i class="bi bi-chevron-right me-lg-1" *ngIf="!isLogoSwitched"></i>
+            <i class="bi bi-chevron-down me-lg-1" *ngIf="isLogoSwitched"></i>
+            <span class="mt-lg-2">Projects</span>
         </button>
         <div class="collapse" id="collapseExample">
             <div class="card card-body bg-transparent border-0 p-0">
                 <div class="row justify-content-center">
                     <ul class="col-7">
-                      <div *ngFor="let item of projects">
-                        <li class="col-12 my-lg-2 d-flex align-items-center"> <i class="bi bi-clipboard-data text-white me-lg-1"></i> <a class="text-white mt-lg-2" routerLink='/project/{{item.id}}' routerLinkActive="active">{{item.nom_projet}}</a></li>
-                      </div>                    
-                     </ul>
+                        <div *ngFor="let item of projects">
+                            <li class="col-12 my-lg-2 d-flex align-items-center"> 
+                                <i class="text-light bi bi-clipboard-data me-lg-1"></i> 
+                                <a class="text-light mt-lg-2" routerLink='/project/{{item.id}}' 
+                                    routerLinkActive="active">{{item.nom_projet}}</a>
+                            </li>
+                        </div>
+                    </ul>
                 </div>
             </div>
         </div>
 
         <div id="adding-links" class="position-absolute bottom-0 my-4">
             <ul>
-                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-plus text-white"></i> <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" (click)="goToNewProject()">New project</button></li>
-                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-plus text-white"></i> <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" (click)="goToNewDev()">New dev</button></li>
+                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-code-slash text-white"></i> 
+                    <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" [routerLink]="['devs-overview']">
+                        Devs overview</button>
+                </li>
+                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-plus text-white"></i> 
+                    <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" (click)="goToNewProject()">
+                        New project</button>
+                </li>
+                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-plus text-white"></i> 
+                    <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" (click)="goToNewDev()">
+                        New dev</button>
+                </li>
             </ul>
         </div>
     </div>
