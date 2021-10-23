@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Employee } from '../shared/model/employee.model';
 import { Role } from '../shared/model/role.model';
 import { EmployeeService } from '../shared/services/employee.service';
@@ -22,7 +23,9 @@ export class NewDevComponent implements OnInit {
   roles: Role[];
   role: Role;
 
-  constructor(private roleService: RoleService, private employeService: EmployeeService) { }
+  constructor(private roleService: RoleService,
+    private employeService: EmployeeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.roleService.getAllProjets().subscribe(roles => {
@@ -57,7 +60,7 @@ export class NewDevComponent implements OnInit {
           this.employe.prenom = this.firstNameControl.value
           this.employeService.create(this.employe).subscribe(
             response => {
-              console.log(response);
+              this.router.navigate(['/dev-overview/'])
             }
           )
         }
