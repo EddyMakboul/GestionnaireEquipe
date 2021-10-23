@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,5 +26,15 @@ public class TacheService {
             taskRepository.save(tache);
             taskRepository.deleteById(id);
         }
+    }
+
+    public void deleteAllTask(){
+        List<Tache> taches = taskRepository.findAll();
+        for (Tache tache: taches){
+            tache.setEmploye(null);
+            tache.setProjet(null);
+            taskRepository.save(tache);
+        }
+        taskRepository.deleteAll();
     }
 }
