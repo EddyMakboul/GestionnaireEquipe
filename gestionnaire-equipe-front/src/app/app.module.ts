@@ -25,6 +25,7 @@ import { CompetenceService } from './shared/services/competence.service';
 import { EmployeeService } from './shared/services/employee.service';
 import { TacheService } from './shared/services/tache.service';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { NewMemberComponent } from './new-member/new-member.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { NewTaskComponent } from './new-task/new-task.component';
     TaskComponent,
     DevsOverviewComponent,
     NewTaskComponent,
+    NewMemberComponent,
   ],
   imports: [
     BrowserModule,

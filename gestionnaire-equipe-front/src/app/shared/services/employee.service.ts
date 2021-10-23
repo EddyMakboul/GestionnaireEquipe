@@ -46,4 +46,8 @@ export class EmployeeService {
     return this.http.put(this.ressourceUrl + '/removeprojet/' + id_employe, projet);
   }
 
+  addProjet(projet: Projet, id_employe: Number) {
+    return this.http.put(this.ressourceUrl + '/addprojet/' + id_employe, projet);
+  }
+
 }
