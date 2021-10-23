@@ -13,8 +13,6 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,7 +84,39 @@ public class ProjetTest {
     @Test
     @Order(2)
     public void testUpdateProjet(){
-        
+        Projet projet = createProjet();
+
+        Employe chef = employeRepository.findAll().get(3);
+
+        Employe employe1 = employeRepository.findAll().get(2);
+        employe1 = employeService.findById(employe1.getId());
+        employe1.deleteProjet(projet);
+        employeRepository.save(employe1);
+
+        Employe employe2 = employeRepository.findAll().get(4);
+        employe2 = employeService.findById(employe2.getId());
+        employe2.addProjet(projet);
+        employeRepository.save(employe2);
+
+        Tache tache = taskRepository.findAll().get(1);
+        tache.setEmploye(null);
+        tache.setProjet(null);
+        taskRepository.save(tache);
+
+        tache = taskRepository.findAll().get(1);
+        tache.setEmploye(employe2);
+        tache.setProjet(projet);
+        taskRepository.save(tache);
+
+        projet.setChef_projet(chef);
+        projetRepository.save(projet);
+
+        projet = projetService.findById(projet.getId());
+
+        assertEquals(employe2.getId(),projet.getEmployes().get(0).getId());
+        assertEquals(tache.getId(),projet.getTaches().get(0).getId());
+        assertEquals(chef.getId(),projet.getChef_projet().getId());
+
     }
 
     @Test
