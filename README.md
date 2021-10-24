@@ -14,5 +14,5 @@ installation front angular:
 2.installer nvm(nvm-setup.zip):https://github.com/coreybutler/nvm-windows/releases
 pour ces étapes ne pas utiliser powershell
 3.ouvrir un terminal faire la commande: npm install -g @angular/cli
-4.toujour dans un terminal ce rendre dans le dossier /gestionnaire-equipe-front et effectuer la commande 'npm i' (pour télécharger toute les dépendances du projet).
+4.toujours dans un terminal ce rendre dans le dossier /gestionnaire-equipe-front et effectuer la commande 'npm i' (pour télécharger toute les dépendances du projet).
 5.rester dans le dossier/gestionnaire-equipe-front et faire la commande 'npm start' pour lancer le serveur.
