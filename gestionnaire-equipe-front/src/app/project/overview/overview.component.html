@@ -1,10 +1,11 @@
-<div class="py-lg-3"> 
+<div class="py-lg-3">
     <h1 class="fs-3 fw-bold">{{projet?.nom_projet}}</h1>
-    <p class="fs-5 lh-base">{{projet.description}}</p>
+    <p class="fs-5 lh-base">{{projet?.description}}</p>
     <div class="row justify-content-start">
         <p class="fw-bold fs-5 col-auto">Project manager : </p>
-        <a *ngIf="projet.chef_projet" class="fs-5 col-auto px-0" [routerLink]="['devs-overview']">
+        <a *ngIf="projet?.chef_projet" class="fs-5 col-auto px-0" [routerLink]="['devs-overview']">
             {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}} </a>
-        <a class="col-auto" routerLink='/update-leader/{{projet.id}}' routerLinkActive="active"><i class="bi bi-pencil"></i></a>
+        <a class="col-auto" routerLink='/update-leader/{{projet?.id}}' routerLinkActive="active"><i
+                class="bi bi-pencil"></i></a>
     </div>
 </div>
