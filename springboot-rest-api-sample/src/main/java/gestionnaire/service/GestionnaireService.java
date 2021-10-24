@@ -34,7 +34,7 @@ public class GestionnaireService {
 
     @PostConstruct
     public void populate() {
-        Role developpeurRole = new Role("developpeur");
+        Role developpeurRole = new Role("Développeur");
         Role ChefDeProjetRole = new Role("Chef de projet");
         roleRepository.save(developpeurRole);
         roleRepository.save(ChefDeProjetRole);
