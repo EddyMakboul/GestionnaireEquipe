@@ -1,8 +1,7 @@
-<h1>Change Leader</h1>
-<h2>Actual Leader: {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}</h2>
+<h1>Update Task</h1>
 
-<div class="new-dev-form">
-    <form novalidate *ngIf="projet && leaders" [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
+<div class="new-task-form">
+    <form novalidate *ngIf="tache" [formGroup]="updateTaskForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label>name</label>
             <input type="name" class="form-control" formControlName="name">
@@ -12,9 +11,10 @@
             <textarea type="description" class="form-control" formControlName="description"></textarea>
         </div>
         <div class="form-group">
-            <label>Leader</label>
-            <select class="form-control" formControlName="chef" required>
-                <option *ngFor="let l of leaders" [value]="l.id">{{l.prenom}} {{l.nom}}</option>
+            <label>Assigned to</label>
+            <select class="form-control" formControlName="employe">
+                <option [value]=""></option>
+                <option *ngFor="let e of tache?.projet?.employes" [value]="e.id">{{e?.prenom}} {{e?.nom}}</option>
 
             </select>
         </div>

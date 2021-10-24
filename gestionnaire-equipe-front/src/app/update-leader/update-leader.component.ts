@@ -18,6 +18,8 @@ export class UpdateLeaderComponent implements OnInit {
 
   leaderForm: FormGroup;
   leaderControls: FormControl;
+  nameControls: FormControl;
+  descriptionControls: FormControl;
 
   constructor(private activatedRoute: ActivatedRoute,
     private projetService: ProjetService,
@@ -25,32 +27,41 @@ export class UpdateLeaderComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      params => {
-        this.projetService.getProjetById(params.id).subscribe(
-          projet => {
-            this.projet = projet;
-          }
-        )
-      }
-    );
+
     this.employeService.getAllChef().subscribe(
       leaders => {
         this.leaders = leaders;
+        this.activatedRoute.params.subscribe(
+          params => {
+            this.projetService.getProjetById(params.id).subscribe(
+              projet => {
+                this.projet = projet;
+                this.createFormControls();
+                this.createForm();
+              }
+            )
+          }
+        );
       }
     )
-    this.createFormControls();
-    this.createForm();
-
   }
 
   createFormControls(): void {
     this.leaderControls = new FormControl("", Validators.required);
+    this.nameControls = new FormControl("", Validators.required);
+    this.descriptionControls = new FormControl("", Validators.required);
+    this.nameControls.setValue(this.projet.nom_projet);
+    this.descriptionControls.setValue(this.projet.description);
+    this.leaderControls.setValue(this.projet.chef_projet?.id)
+    this.nameControls.updateValueAndValidity();
+    this.descriptionControls.updateValueAndValidity();
 
   }
   createForm() {
     this.leaderForm = new FormGroup({
       chef: this.leaderControls,
+      name: this.nameControls,
+      description: this.descriptionControls,
     });
   }
 
