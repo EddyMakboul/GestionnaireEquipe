@@ -29,7 +29,7 @@ export class NewProjectComponent implements OnInit {
   }
 
   createFormControls(): void {
-    this.descrptionControl = new FormControl("", Validators.required);
+    this.descrptionControl = new FormControl("");
     this.nameControl = new FormControl("", Validators.required);
   }
   createForm() {
@@ -41,7 +41,6 @@ export class NewProjectComponent implements OnInit {
 
   onSubmit() {
     if (this.projetForm.valid) {
-      console.log("Form Submitted!");
       this.projet.nom_projet = this.nameControl.value;
       this.projet.description = this.descrptionControl.value
       this.projetService.create(this.projet).subscribe(

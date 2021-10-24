@@ -25,7 +25,6 @@ export class DevsOverviewComponent implements OnInit {
   delete(id_employe: number): void {
     this.employeService.delete(id_employe).subscribe(
       response => {
-        console.log(response);
         this.employeService.findAll().subscribe(
           employes => {
             this.employes = employes;
@@ -33,7 +32,6 @@ export class DevsOverviewComponent implements OnInit {
         )
       },
       errors => {
-        console.log(errors)
       }
     )
   }

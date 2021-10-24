@@ -10,16 +10,13 @@ import { ProjetService } from '../shared/services/projet.service';
 })
 export class SideBarComponent implements OnInit {
 
-  isLogoSwitched : boolean = false;
+  isLogoSwitched: boolean = false;
 
   projects: Projet[] = [];
   constructor(private projectService: ProjetService, private router: Router) { }
 
   ngOnInit(): void {
-    this.projectService.getAllProjets().subscribe(response => {
-      this.projects = response;
-      console.log(this.projects)
-    });
+    this.getProjetList();
   }
 
   goToNewDev(): void {
@@ -31,7 +28,14 @@ export class SideBarComponent implements OnInit {
   }
 
   switchLogo() {
-      this.isLogoSwitched = !this.isLogoSwitched;
+    this.isLogoSwitched = !this.isLogoSwitched;
+    this.getProjetList();
+  }
+
+  getProjetList() {
+    this.projectService.getAllProjets().subscribe(response => {
+      this.projects = response;
+    });
   }
 
 }

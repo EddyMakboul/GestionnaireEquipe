@@ -41,7 +41,7 @@ export class UpdateTaskComponent implements OnInit {
 
   createFormControls(): void {
     this.nomControls = new FormControl("", Validators.required);
-    this.descriptionControls = new FormControl("", Validators.required);
+    this.descriptionControls = new FormControl("");
     this.employeControl = new FormControl("");
     this.nomControls.setValue(this.tache.nom_tache);
     this.descriptionControls.setValue(this.tache.description);
@@ -62,7 +62,6 @@ export class UpdateTaskComponent implements OnInit {
 
     if (this.updateTaskForm.valid) {
       if (this.employeControl.value) {
-        console.log(this.employeControl.value)
         this.employeService.findById(this.employeControl.value).subscribe(
           employe => {
             this.tache.employe = employe;

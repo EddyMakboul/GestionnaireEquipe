@@ -28,7 +28,6 @@ export class NewDevComponent implements OnInit {
   ngOnInit(): void {
     this.roleService.getAllProjets().subscribe(roles => {
       this.roles = roles;
-      console.log(roles)
     });
     this.createFormControls();
     this.createForm();
@@ -49,7 +48,6 @@ export class NewDevComponent implements OnInit {
 
   onSubmit() {
     if (this.devForm.valid) {
-      console.log("Form Submitted!");
       this.roleService.findById(this.roleControl.value).subscribe(
         role => {
           this.employe.role = role;
