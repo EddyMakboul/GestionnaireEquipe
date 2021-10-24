@@ -47,7 +47,7 @@ public class EmployeController {
 
     /**
      * methode GET, permet de récupérer tous les employés
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requête http
      */
     @GetMapping()
     public ResponseEntity<List<Employe>> findAllEmployes ()
@@ -64,7 +64,7 @@ public class EmployeController {
     /**
      *Methode GET, permettant de recuperer un employé via son id
      * @param id
-     * @return  new reponseEntity avec le status de la requete http
+     * @return  new responseEntity avec le status de la requete http
      */
     @GetMapping("/{id}")
     public ResponseEntity<Employe> findEmployeById (@PathVariable Long id)
@@ -81,7 +81,7 @@ public class EmployeController {
     /**
      * Methode POST, permettant la création d'un nouvel employé
      * @param employe
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PostMapping()
     public ResponseEntity<Employe> createEmploye (@RequestBody Employe employe)
@@ -101,7 +101,7 @@ public class EmployeController {
     /**
      * Methode PUT, permettant de mettre à jour un employe
      * @param employe
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping()
     public ResponseEntity<Employe> updateEmploye (@RequestBody Employe employe)
@@ -125,7 +125,7 @@ public class EmployeController {
     /**
      * Methode DELETE, permet de supprimet un employé via son id
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEmploye (@PathVariable Long id)
@@ -150,7 +150,7 @@ public class EmployeController {
      * Methode PUT, mise à jour d'un employé en lui ajoutant une compétence
      * @param competence
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping("/addcompetence/{id}")
     public ResponseEntity<Employe> updateEmployeAddCompetence (@RequestBody Competence competence, @PathVariable Long id)
@@ -183,7 +183,7 @@ public class EmployeController {
      * Methode PUT, mise à jour d'un employé en lui supprimant une compétences
      * @param competence
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping("/removecompetence/{id}")
     public ResponseEntity<Employe> updateEmployeRemoveCompetence (@RequestBody Competence competence, @PathVariable Long id)
@@ -221,7 +221,7 @@ public class EmployeController {
      * Methode PUT, pemet d'affecter un employe à un projet
      * @param projet
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping("/addprojet/{id}")
     public ResponseEntity<Employe> updateEmployeAddProjet (@RequestBody Projet projet, @PathVariable Long id)
@@ -254,7 +254,7 @@ public class EmployeController {
      * Methode PUT, permet de retirer un employé à un projet
      * @param projet
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping("/removeprojet/{id}")
     public ResponseEntity<Employe> updateEmployeRemoveProjet (@RequestBody Projet projet, @PathVariable Long id)
@@ -292,7 +292,7 @@ public class EmployeController {
      * Method PUT, permet d'ajouter une tache à un employé qui est affecté à un projet
      * @param tache
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping("/addtache/{id}")
     public ResponseEntity<Employe> updateEmployeAddProjet (@RequestBody Tache tache, @PathVariable Long id)
@@ -325,7 +325,7 @@ public class EmployeController {
      * Methode PUT, permet de retirer une tache à un employé
      * @param tache
      * @param id
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @PutMapping("/removetache/{id}")
     public ResponseEntity<Employe> updateEmployeRemoveProjet (@RequestBody Tache tache, @PathVariable Long id)
@@ -362,7 +362,7 @@ public class EmployeController {
 
     /**
      * Methode GET, permet de récuperer tous les chefs de projet
-     * @return new reponseEntity avec le status de la requete http
+     * @return new responseEntity avec le status de la requete http
      */
     @GetMapping("/chef")
     public ResponseEntity<List<Employe>> findAllchef ()
