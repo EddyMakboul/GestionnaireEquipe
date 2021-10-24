@@ -14,11 +14,9 @@ import { RoleService } from '../shared/services/role.service';
 export class NewDevComponent implements OnInit {
 
   devForm: FormGroup;
-
   nameControl: FormControl;
   firstNameControl: FormControl;
   roleControl: FormControl;
-
   employe: Employee = new Employee();
   roles: Role[];
   role: Role;
