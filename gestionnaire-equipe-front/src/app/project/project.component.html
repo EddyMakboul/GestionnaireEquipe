@@ -1,17 +1,17 @@
-<div class="mx-lg-3 mt-lg-2 py-lg-3">
-    <div class="my-lg-2 mx-lg-5 d-flex align-items-center">
+<div class="mx-3 mt-2 py-3">
+    <div class="my-2 mx-5 d-flex align-items-center">
         <i class="bi bi-kanban fs-1 mb-4 me-3"></i>
         <h1 class="fw-bold"> {{project?.nom_projet}} Status Board </h1>
     </div>
 
-    <div class="row justify-content-between mt-lg-2 mx-lg-5 pb-lg-0 border-bottom">
+    <div class="row justify-content-between mt-2 mx-5 pb-0 border-bottom">
         <button class="navbar-btn fw-bold col-auto pt-2 pb-3 rounded-top" (click)="goToOverview()"> Overview </button>
         <div class="col-auto">
             <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top" (click)="goToTeam()"> Team </button>
             <button class="navbar-btn text-muted px-3 pt-2 pb-3 rounded-top" (click)="goToTask()"> Tasks </button>
         </div>
     </div>
-    <div class="row mx-lg-5 px-lg-2 py-lg-2">
+    <div class="row mx-5 px-2 py-2">
         <app-team *ngIf="view==3" [projet]="project" (projetEventEmiter)="updateProjet()"></app-team>
         <app-task *ngIf="view==2" [projet]="project" [taches]="taches" (projetEventEmiter)="updateProjet()"></app-task>
         <app-overview *ngIf="view==1" [projet]="project"></app-overview>

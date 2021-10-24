@@ -1,5 +1,5 @@
-<div class="py-lg-5 px-lg-5 mx-lg-3">
-    <h1 class="fs-2 fw-bold mt-lg-3 mb-lg-3"> New developer </h1>
+<div class="py-5 px-5 mx-3">
+    <h1 class="fs-2 fw-bold mt-lg-3 mt-1 mb-lg-3 mb-2"> New developer </h1>
     <form novalidate [formGroup]="devForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="dev-first-name" class="mb-lg-1">First name</label>
@@ -11,7 +11,7 @@
         </div>
         <div class="mb-3">
             <label for="dev-role">Role</label>
-            <select id="dev-role" class="form-select w-25" formControlName="role">
+            <select id="dev-role" class="form-select w-50" formControlName="role">
                 <option *ngFor="let role of roles" [value]="role.id">{{role.nom_role}}</option>
             </select>
         </div>

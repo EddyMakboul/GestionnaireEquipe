@@ -1,10 +1,12 @@
-<div class="row justify-content-end mb-lg-3">
+<div class="row justify-content-end mb-3">
   <a routerLink='/new-member/{{projet.id}}' routerLinkActive="active"
-    class="col-auto p-0 fs-6 text-muted text-decoration-none d-flex align-items-end">
+    class="col-auto p-0 fs-6 text-success text-decoration-none d-flex align-items-end">
     <i class="bi bi-plus fs-5"></i>
     <span> Add member </span>
   </a>
 </div>
+
+
 
 <h1 class="fs-2 fw-bold mt-lg-3"> Team members </h1>
 <h5 class="fs-5 text-muted"> Skills level :  
@@ -15,17 +17,17 @@
 
 <div id="card-container">
   <div class="row justify-content-start mt-lg-3 gx-lg-1">
-    <div *ngFor="let employe of projet.employes" class="card w-25 mx-lg-2 my-lg-4 shadow border-0 h-auto">
+    <div *ngFor="let employe of projet.employes" class="card col-xl-3 col-md-5 col-sm-8 mx-lg-3 mx-2 my-lg-4 my-sm-3 my-2 shadow border-0 h-auto">
       <div class="card-body">
         <div class="card-title row justify-content-between d-flex align-items-center">
-          <h5 class="fs-4 col-auto">{{employe.prenom}} {{employe.nom}}</h5>
+          <h5 class="fs-5 col-auto">{{employe.prenom}} {{employe.nom}}</h5>
         </div>
-        <h6 class="card-subtitle mb-2 text-muted">Developer</h6>
+        <h6 class="card-subtitle fs-6 mb-2 text-muted">Developer</h6>
         <div id="skills-section" class="row justify-content-start mt-lg-2">
           <div *ngFor="let comp of employe.competences" class="col-auto mx-lg-2 my-lg-2 px-0">
-            <span *ngIf="comp.niveau === 'Moyen'" class="badge bg-pastel-blue fs-6 p-2"> {{comp.nomCompetence}} </span>
-            <span *ngIf="comp.niveau === 'Bon'" class="badge bg-pastel-purple fs-6 p-2"> {{comp.nomCompetence}} </span>
-            <span *ngIf="comp.niveau === 'Expert'" class="badge bg-pastel-red fs-6 p-2"> {{comp.nomCompetence}} </span>
+            <span *ngIf="comp.niveau === 'Moyen'" class="badge bg-pastel-blue p-2"> {{comp.nomCompetence}} </span>
+            <span *ngIf="comp.niveau === 'Bon'" class="badge bg-pastel-purple p-2"> {{comp.nomCompetence}} </span>
+            <span *ngIf="comp.niveau === 'Expert'" class="badge bg-pastel-red p-2"> {{comp.nomCompetence}} </span>
           </div>
         </div>
         <button class="btn btn-outline-danger mt-3 col-12" (click)="removeFromTeam(employe)">REVOKE</button>
