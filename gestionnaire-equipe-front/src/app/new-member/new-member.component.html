@@ -1,15 +1,12 @@
-<h1>Ajouter un dev</h1>
-
-<div class="new-member-form">
+<div class="py-lg-5 px-lg-5 mx-lg-3">
+    <h1 class="fs-2 fw-bold mt-lg-3 mb-lg-3"> New member </h1>
     <form novalidate [formGroup]="memberForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>New dev</label>
-            <select class="form-control" formControlName="employe">
-                <option *ngFor="let e of employes" [value]="e.id">{{e.prenom}} {{e.nom}}</option>
-
+        <div class="mb-3">
+            <label for="new-dev">Developer</label>
+            <select id="new-dev" class="form-select w-25" formControlName="role">
+                <option *ngFor="let employe of employes" [value]="employe.id">{{employe.prenom}} {{employe.nom}}</option>
             </select>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Create</button>
     </form>
 </div>
