@@ -8,6 +8,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Correspond à un employé : défini la façon dont un employé est créé
+ * (nom, prenom, login, mdp, role, competences)
+ */
+
 @Entity
 @Table(name ="T_Employe")
 public class Employe implements Serializable {

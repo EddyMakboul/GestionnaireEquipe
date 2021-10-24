@@ -9,6 +9,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Correspond à la définition d'un projet 
+ */
+
 @Entity
 @Table(name ="T_Projet")
 public class Projet implements Serializable {

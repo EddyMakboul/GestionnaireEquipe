@@ -5,7 +5,7 @@ import gestionnaire.model.Projet;
 import gestionnaire.model.Tache;
 import gestionnaire.repository.EmployeRepository;
 import gestionnaire.repository.ProjetRepository;
-import gestionnaire.repository.TaskRepository;
+import gestionnaire.repository.TacheRepository;
 import gestionnaire.service.EmployeService;
 import gestionnaire.service.ProjetService;
 import gestionnaire.service.TacheService;
@@ -30,7 +30,7 @@ public class ProjetTest {
     TacheService tacheService;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @Autowired
     EmployeRepository employeRepository;
@@ -55,10 +55,10 @@ public class ProjetTest {
         employeRepository.save(employe1);
 
 
-        Tache tache = taskRepository.findAll().get(1);
+        Tache tache = tacheRepository.findAll().get(1);
         tache.setEmploye(employe1);
         tache.setProjet(projet);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
 
         return projetService.findById(projet.getId());
     }
@@ -71,7 +71,7 @@ public class ProjetTest {
         Employe chef = employeRepository.findAll().get(1);
         assertEquals(chef.getId(), projet.getChef_projet().getId());
 
-        Tache tache = taskRepository.findAll().get(1);
+        Tache tache = tacheRepository.findAll().get(1);
         assertEquals(tache.getId(),projet.getTaches().get(0).getId());
         assertEquals(tache.getProjet().getId(),projet.getId());
 
@@ -98,15 +98,15 @@ public class ProjetTest {
         employe2.addProjet(projet);
         employeRepository.save(employe2);
 
-        Tache tache = taskRepository.findAll().get(1);
+        Tache tache = tacheRepository.findAll().get(1);
         tache.setEmploye(null);
         tache.setProjet(null);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
 
-        tache = taskRepository.findAll().get(1);
+        tache = tacheRepository.findAll().get(1);
         tache.setEmploye(employe2);
         tache.setProjet(projet);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
 
         projet.setChef_projet(chef);
         projetRepository.save(projet);
@@ -124,14 +124,14 @@ public class ProjetTest {
     public void testDeleteProjet(){
         Projet projet = createProjet();
 
-        Tache tache = taskRepository.findAll().get(1);
+        Tache tache = tacheRepository.findAll().get(1);
         projetService.deleteProjetById(projet.getId());
 
         Employe employe1 = employeService.findById(employeRepository.findAll().get(2).getId());
 
         assertTrue(projetRepository.findById(projet.getId()).isEmpty());
         assertEquals(0,employe1.getProjets().size());
-        assertTrue(taskRepository.findById(tache.getId()).isEmpty());
+        assertTrue(tacheRepository.findById(tache.getId()).isEmpty());
 
     }
 }

@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller pour les projets, permet la gestion des projets
+ */
 @Controller
 @RequestMapping("/api/projets")
 public class ProjetController {
@@ -27,28 +30,51 @@ public class ProjetController {
     private final Log logger = LogFactory.getLog(getClass());
 
 
+    /**
+     * Methode GET, permet de récupérer tous les projets
+     * @return new responseEntity avec le status de la requête http
+     */
     @GetMapping()
     public ResponseEntity<List<Projet>> getAllProjet() {
         return new ResponseEntity<>(repo.findAll(), HttpStatus.OK);
     }
 
+    /**
+     * Methode GET, permet de récupérer un projet via son id
+     * @param id l'id du projet
+     * @return
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Projet> getProjet(@PathVariable long id) {
         return new ResponseEntity<>(repo.findById(id).get(),HttpStatus.OK);
     }
 
+    /**
+     * Methode DELETE, permet la suppression d'un projet
+     * @param id l'id du projet
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteProjet(@PathVariable long id) {
         projetService.deleteProjetById(id);
     }
 
+    /**
+     * Methode POST, pemrmet la création d'un nouveau projet
+     * @param p un Projet
+     * @return
+     */
     @PostMapping()
     public ResponseEntity<Projet> postProjet(@RequestBody Projet p) {
         Projet n =  repo.save(p);
         return new ResponseEntity<>(n,HttpStatus.OK);
     }
 
+    /**
+     * Methode PUT, permet de mettre à jour un projet
+     * @param projet un Projet
+     * @return
+     */
     @PutMapping()
     public ResponseEntity<Projet> updateProjet (@RequestBody Projet projet)
     {

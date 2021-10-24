@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Correspond aux competences d'un employe
+ */
+
 @Entity
 @Table(name ="T_Competence")
 public class Competence implements Serializable {
