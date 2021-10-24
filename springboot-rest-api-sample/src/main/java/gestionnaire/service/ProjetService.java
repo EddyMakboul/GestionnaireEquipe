@@ -13,6 +13,10 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service correspondant aux projets
+ */
+
 @Service
 public class ProjetService {
 

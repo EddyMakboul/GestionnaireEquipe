@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service correspondant aux employés
+ */
+
 @Service
 public class EmployeService {
     @Autowired

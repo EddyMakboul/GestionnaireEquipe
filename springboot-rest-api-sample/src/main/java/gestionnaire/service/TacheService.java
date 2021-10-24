@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Service correspondant aux taches
+ */
+
 @Service
 public class TacheService {
 

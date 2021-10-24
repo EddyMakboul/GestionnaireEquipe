@@ -10,6 +10,11 @@ import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Service permettant d'initialisé les valeurs pour chacun des éléments de l'application :
+ *  projet, employe, role et tache
+ */
+
 @Service
 public class GestionnaireService {
     @Autowired
