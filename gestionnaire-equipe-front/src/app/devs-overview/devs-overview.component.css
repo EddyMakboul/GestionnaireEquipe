@@ -1,14 +1,5 @@
-.employe-container{
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.card {
-    height: 200px;
-    border: solid;
-}
-
-.chip {
-    background-color: rgb(116, 116, 156);
+#card-container {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 75vh;
 }

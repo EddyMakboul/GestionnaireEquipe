@@ -1,25 +1,12 @@
-<!-- <div class="employe-container">
-    <div *ngFor="let employe of employes">
-        <mat-card class="card">
-            <mat-card-header>
-                <mat-card-title>{{employe.nom}} {{employe.prenom}}</mat-card-title>
-                <button mat-icon-button (click)="delete(employe.id)" color="primary">
-                    <mat-icon>close</mat-icon>
-                </button>
-            </mat-card-header>
-            <mat-card-content>
-                <mat-chip-list aria-label="list compétence">
-                    <div *ngFor="let comp of employe.competences">
-                        <mat-chip class="chip"> {{comp.nomCompetence}}</mat-chip>
-                    </div>
-                </mat-chip-list>
-            </mat-card-content>
-        </mat-card>
-    </div>
-</div> -->
+<div class="py-lg-5 px-lg-5 mx-lg-3">
+  <h1 class="fs-2 fw-bold mt-lg-3"> Devs overview </h1>
 
-<div class="py-lg-3 px-lg-4">
-    <h1 class="fs-2 fw-bold mt-lg-3"> Devs overview </h1>
+  <h5 class="fs-5 text-muted"> Legend : 
+    <span class="badge bg-pastel-blue me-2">Beginner</span> |
+    <span class="badge bg-pastel-purple mx-2">Confirmed</span> |
+    <span class="badge bg-pastel-red mx-2">Expert</span>
+  </h5>
+   
     <div id="card-container">
         <div class="row justify-content-start mt-lg-3 gx-lg-1">
           <div *ngFor="let employe of employes" class="card w-25 mx-lg-2 my-lg-4 shadow border-0 h-auto">
