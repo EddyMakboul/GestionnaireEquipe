@@ -71,6 +71,8 @@ export class UpdateLeaderComponent implements OnInit {
       this.employeService.findById(this.leaderControls.value).subscribe(
         employe => {
           this.projet.chef_projet = employe;
+          this.projet.description = this.descriptionControls.value;
+          this.projet.nom_projet = this.nameControls.value;
           this.projetService.update(this.projet).subscribe(
             projet => {
               this.router.navigate(['/project', this.projet.id])
