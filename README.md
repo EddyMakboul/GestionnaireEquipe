@@ -1,6 +1,7 @@
 # GDX_21
 Plateforme de gestion d'équipe et de tâches.
-Equipe 5
+Equipe 6
+URL du git : https://github.com/EddyMakboul/GestionnaireEquipe
 
 installation du back java eclipse:
 1. Télécharger éclipse https://www.eclipse.org/downloads/
