@@ -2,18 +2,20 @@
     <h1 class="fs-2 fw-bold mt-lg-3 mt-1 mb-3"> Modify task </h1>
     <form novalidate *ngIf="tache" [formGroup]="updateTaskForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
-            <label for="task-name"  class="mb-lg-1">Name</label>
+            <label for="task-name" class="mb-lg-1">Name</label>
             <input id="task-name" type="name" class="form-control" formControlName="name">
         </div>
         <div class="mb-3">
             <label for="task-description" class="mb-lg-1">Description</label>
-            <textarea type="description" class="form-control" formControlName="description" rows="10" cols="50"></textarea>
+            <textarea type="description" class="form-control" formControlName="description" rows="10"
+                cols="50"></textarea>
         </div>
         <div class="mb-3">
             <label for="task-dev">Assigned to</label>
             <select id="task-dev" class="form-select w-50" formControlName="employe">
-                <option [value]="">- Nobody -</option>
-                <option *ngFor="let employe of tache?.projet?.employes" [value]="employe.id">{{employe.prenom}} {{employe.nom}}</option>
+                <option [value]=""></option>
+                <option *ngFor="let employe of tache?.projet?.employes" [value]="employe.id">{{employe.prenom}}
+                    {{employe.nom}}</option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>

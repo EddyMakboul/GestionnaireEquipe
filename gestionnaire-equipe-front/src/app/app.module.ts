@@ -26,7 +26,7 @@ import { EmployeeService } from './shared/services/employee.service';
 import { TacheService } from './shared/services/tache.service';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { NewMemberComponent } from './new-member/new-member.component';
-import { UpdateLeaderComponent } from './update-leader/update-leader.component';
+import { UpdateProjetComponent } from './update-leader/update-projet.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 
 @NgModule({
@@ -42,7 +42,7 @@ import { UpdateTaskComponent } from './update-task/update-task.component';
     DevsOverviewComponent,
     NewTaskComponent,
     NewMemberComponent,
-    UpdateLeaderComponent,
+    UpdateProjetComponent,
     UpdateTaskComponent,
   ],
   imports: [

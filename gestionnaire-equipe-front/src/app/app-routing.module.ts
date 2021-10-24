@@ -6,7 +6,7 @@ import { NewMemberComponent } from './new-member/new-member.component';
 import { NewProjectComponent } from './new-project/new-project.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { ProjectComponent } from './project/project.component';
-import { UpdateLeaderComponent } from './update-leader/update-leader.component';
+import { UpdateProjetComponent } from './update-leader/update-projet.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 
 
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path: 'new-project', component: NewProjectComponent },
   { path: 'update-task/:id', component: UpdateTaskComponent },
   { path: 'new-member/:id', component: NewMemberComponent },
-  { path: 'update-leader/:id', component: UpdateLeaderComponent },
+  { path: 'update-leader/:id', component: UpdateProjetComponent },
   { path: 'project/:id', component: ProjectComponent },
   { path: 'new-task/:id', component: NewTaskComponent },
   { path: '**', redirectTo: 'devs-overview', pathMatch: 'full' },

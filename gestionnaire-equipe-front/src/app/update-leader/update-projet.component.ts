@@ -7,11 +7,11 @@ import { EmployeeService } from '../shared/services/employee.service';
 import { ProjetService } from '../shared/services/projet.service';
 
 @Component({
-  selector: 'app-update-leader',
-  templateUrl: './update-leader.component.html',
-  styleUrls: ['./update-leader.component.css']
+  selector: 'app-update-projet',
+  templateUrl: './update-projet.component.html',
+  styleUrls: ['./update-projet.component.css']
 })
-export class UpdateLeaderComponent implements OnInit {
+export class UpdateProjetComponent implements OnInit {
 
   projet: Projet;
   leaders: Employee[];

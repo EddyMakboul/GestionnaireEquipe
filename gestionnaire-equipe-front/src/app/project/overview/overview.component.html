@@ -3,12 +3,12 @@
     <p class="fs-5 lh-base">{{projet?.description}}</p>
     <div class="row justify-content-start">
         <p class="fw-bold fs-5 col-auto">Project manager : </p>
-        <p *ngIf="projet.chef_projet" class="text-info fs-5 col-auto px-0" [routerLink]="['devs-overview']">
+        <p *ngIf="projet?.chef_projet" class="text-info fs-5 col-auto px-0" [routerLink]="['devs-overview']">
             {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}} </p>
     </div>
     <div class="row justify-content-start px-3">
-        <button class="btn btn-outline-primary float-end col-auto"
-        id="task-done-btn" routerLink='/update-leader/{{projet.id}}' routerLinkActive="active"> UPDATE </button>
+        <button class="btn btn-outline-primary float-end col-auto" id="task-done-btn"
+            routerLink='/update-leader/{{projet?.id}}' routerLinkActive="active"> UPDATE </button>
     </div>
 
 </div>
