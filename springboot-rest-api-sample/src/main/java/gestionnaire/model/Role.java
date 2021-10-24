@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Correspond à un role pour un employé
+ */
+
 @Entity
 @Table(name ="T_Role")
 public class Role implements Serializable {
