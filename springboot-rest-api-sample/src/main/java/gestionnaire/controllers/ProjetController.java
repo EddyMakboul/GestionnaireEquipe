@@ -31,7 +31,7 @@ public class ProjetController {
 
 
     /**
-     * Methode GET, permet de récupérer tous les projets actifs
+     * Methode GET, permet de récupérer tous les projets
      * @return new responseEntity avec le status de la requête http
      */
     @GetMapping()
