@@ -1,16 +1,14 @@
-<h1>Change Leader</h1>
-<h2>Actual Leader: {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}</h2>
+<div class="py-lg-5 px-lg-5 mx-lg-3">
+    <h1 class="fs-2 fw-bold mt-lg-3 mb-lg-2"> Update Project Manager </h1>
+    <h5 class="fs-5 text-muted mb-lg-3">{{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}</h5>
 
-<div class="new-dev-form">
     <form novalidate [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>Leader</label>
-            <select class="form-control" formControlName="chef" required>
-                <option *ngFor="let l of leaders" [value]="l.id">{{l.prenom}} {{l.nom}}</option>
-
+        <div class="mb-3">
+            <label for="project-manager">Project Manager</label>
+            <select id="project-manager" class="form-select w-25" formControlName="chef" required>
+                    <option *ngFor="let leader of leaders" [value]="leader.id">{{leader.prenom}} {{leader.nom}}</option>                
             </select>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Update</button>
     </form>
 </div>
