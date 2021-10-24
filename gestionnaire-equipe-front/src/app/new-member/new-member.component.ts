@@ -13,11 +13,13 @@ import { ProjetService } from '../shared/services/projet.service';
 })
 export class NewMemberComponent implements OnInit {
 
-  employes: Employee[];
+  employes: Employee[] = [];
   projet: Projet;
 
   memberForm: FormGroup;
   employeControl: FormControl;
+
+  tempEmploye: Number[] = [];
 
   constructor(private employeService: EmployeeService,
     private projetService: ProjetService,
@@ -32,8 +34,10 @@ export class NewMemberComponent implements OnInit {
             this.projet = projet;
             this.employeService.findAll().subscribe(
               employes => {
-                this.employes = employes.filter(employe => !this.projet.employes?.includes(employe));
-                console.log(this.employes);
+                if (this.projet.employes) {
+                  this.tempEmploye = this.projet.employes.map(m => m.id)
+                  this.employes = employes.filter(v => !this.tempEmploye.includes(v.id))
+                }
               }
             )
           }
