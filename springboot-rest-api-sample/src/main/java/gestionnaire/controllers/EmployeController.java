@@ -7,7 +7,7 @@ import gestionnaire.model.Tache;
 import gestionnaire.repository.CompetenceRepository;
 import gestionnaire.repository.EmployeRepository;
 import gestionnaire.repository.ProjetRepository;
-import gestionnaire.repository.TaskRepository;
+import gestionnaire.repository.TacheRepository;
 import gestionnaire.service.EmployeService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -39,7 +39,7 @@ public class EmployeController {
     ProjetRepository projetRepository;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @GetMapping()
     public ResponseEntity<List<Employe>> findAllEmployes ()
@@ -244,14 +244,14 @@ public class EmployeController {
             logger.error("Can't add tache to employe. Employe with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
-        if (taskRepository.findById(tache.getId()).isEmpty()){
+        if (tacheRepository.findById(tache.getId()).isEmpty()){
             logger.error("Can't add tache to employe. Tache with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         Employe updatedEmploye;
         Employe employe = potentialEmploye.get();
         tache.setEmploye(employe);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
         try {
             updatedEmploye = employeRepository.findById(id).get();
         } catch (Exception e){
@@ -285,7 +285,7 @@ public class EmployeController {
         Employe updatedEmploye;
         Employe employe = potentialEmploye.get();
         tache.setEmploye(null);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
         try {
             updatedEmploye = employeRepository.findById(id).get();
         } catch (Exception e){

@@ -1,13 +1,10 @@
 package gestionnaire.service;
 
-import gestionnaire.model.Employe;
-import gestionnaire.model.Projet;
 import gestionnaire.model.Tache;
-import gestionnaire.repository.TaskRepository;
+import gestionnaire.repository.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,26 +12,26 @@ import java.util.Optional;
 public class TacheService {
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     public void deleteTacheById(Long id){
-        Optional<Tache> potentialTache = taskRepository.findById(id);
+        Optional<Tache> potentialTache = tacheRepository.findById(id);
         if (potentialTache.isPresent()){
             Tache tache = potentialTache.get();
             tache.setEmploye(null);
             tache.setProjet(null);
-            taskRepository.save(tache);
-            taskRepository.deleteById(id);
+            tacheRepository.save(tache);
+            tacheRepository.deleteById(id);
         }
     }
 
     public void deleteAllTask(){
-        List<Tache> taches = taskRepository.findAll();
+        List<Tache> taches = tacheRepository.findAll();
         for (Tache tache: taches){
             tache.setEmploye(null);
             tache.setProjet(null);
-            taskRepository.save(tache);
+            tacheRepository.save(tache);
         }
-        taskRepository.deleteAll();
+        tacheRepository.deleteAll();
     }
 }

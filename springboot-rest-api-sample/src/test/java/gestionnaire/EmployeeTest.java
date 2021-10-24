@@ -29,7 +29,7 @@ public class EmployeeTest {
     CompetenceRepository competenceRepository;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @Autowired
     ProjetRepository projetRepository;
@@ -112,9 +112,9 @@ public class EmployeeTest {
         employeRepository.save(employe);
         Employe employe2 = employeService.findByNomAndPrenom("Arnaud", "Jean").get(0);
         assertEquals(0,employe2.getTaches().size());
-        Tache tache = taskRepository.findAll().get(0);
+        Tache tache = tacheRepository.findAll().get(0);
         tache.setEmploye(employe2);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
         Employe employe3 = employeService.findByNomAndPrenom("Arnaud", "Jean").get(0);
         List<Tache> taches = employe3.getTaches();
         assertEquals(taches.get(0).getId(), tache.getId());
@@ -127,14 +127,14 @@ public class EmployeeTest {
         employeRepository.save(employe);
         Employe employe2 = employeService.findByNomAndPrenom("Arnaud", "Jean").get(0);
         assertEquals(0,employe2.getTaches().size());
-        Tache tache = taskRepository.findAll().get(0);
+        Tache tache = tacheRepository.findAll().get(0);
         tache.setEmploye(employe2);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
         Employe employe3 = employeService.findByNomAndPrenom("Arnaud", "Jean").get(0);
         List<Tache> taches = employe3.getTaches();
         assertEquals(taches.get(0).getId(), tache.getId());
         tache.setEmploye(null);
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
         Employe employe4 = employeService.findByNomAndPrenom("Arnaud", "Jean").get(0);
         taches = employe4.getTaches();
         assertEquals(0, taches.size());

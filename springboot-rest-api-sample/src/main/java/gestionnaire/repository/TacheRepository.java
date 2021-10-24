@@ -12,7 +12,7 @@ import java.util.List;
  * Repository permettant les opérations sur les Taches
  */
 
-public interface TaskRepository extends JpaRepository<Tache, Long> {
+public interface TacheRepository extends JpaRepository<Tache, Long> {
     List<Tache> findTacheByEmploye(Employe employe);
 
     List<Tache> findTacheByProjet(Projet projet);

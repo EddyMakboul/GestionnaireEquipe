@@ -1,10 +1,9 @@
 package gestionnaire.controllers;
 
-import gestionnaire.model.Employe;
 import gestionnaire.model.Projet;
 import gestionnaire.model.Tache;
 import gestionnaire.repository.ProjetRepository;
-import gestionnaire.repository.TaskRepository;
+import gestionnaire.repository.TacheRepository;
 import gestionnaire.service.TacheService;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -18,12 +17,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/taches")
-public class TaskController {
+public class TacheController {
 
     private final Log logger = LogFactory.getLog(getClass());
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @Autowired
     TacheService tacheService;
@@ -34,12 +33,12 @@ public class TaskController {
 
     @GetMapping()
     public Iterable<Tache> getAllActiveTasks(){
-        return taskRepository.findAll();
+        return tacheRepository.findAll();
     }
 
     @PostMapping()
     public Tache createTask(@RequestBody Tache tache){
-        taskRepository.save(tache);
+        tacheRepository.save(tache);
         return tache;
     }
 
@@ -52,12 +51,12 @@ public class TaskController {
     @PutMapping()
     public ResponseEntity<Tache> updateTask (@RequestBody Tache task){
         Tache updateTask;
-        if (taskRepository.findById(task.getId()).isEmpty()){
+        if (tacheRepository.findById(task.getId()).isEmpty()){
             logger.error("Can't update task. Task with id = "+task.getId()+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         try {
-            updateTask = taskRepository.save(task);
+            updateTask = tacheRepository.save(task);
         } catch (Exception e){
             logger.error(e);
             logger.error("Error during update task with id = "+task.getId());
@@ -74,13 +73,13 @@ public class TaskController {
             logger.error("Can't find projet. Projet with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(taskRepository.findTacheByProjet(projet.get()),HttpStatus.OK);
+        return new ResponseEntity<>(tacheRepository.findTacheByProjet(projet.get()),HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Tache> findTacheById (@PathVariable Long id)
     {
-        Optional<Tache> tache = taskRepository.findById(id);
+        Optional<Tache> tache = tacheRepository.findById(id);
         if (tache.isEmpty()){
             logger.error("Can't find tache. Tache with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -92,7 +91,7 @@ public class TaskController {
     @PutMapping("/{id}")
     public ResponseEntity<Tache> updateStatusTache	 (@PathVariable Long id,@RequestBody Boolean finished)
     {
-        Optional<Tache> tache = taskRepository.findById(id);
+        Optional<Tache> tache = tacheRepository.findById(id);
         if (tache.isEmpty()){
             logger.error("Can't find tache. Tache with id = "+id+" doesn't exist");
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -101,7 +100,7 @@ public class TaskController {
         Tache tache1 = tache.get();
         tache1.setFinished(finished);
         try {
-            updatedTache = taskRepository.save(tache1);
+            updatedTache = tacheRepository.save(tache1);
         } catch (Exception e){
             logger.error(e);
             logger.error("Error during update of tache with id = "+tache1.getId());

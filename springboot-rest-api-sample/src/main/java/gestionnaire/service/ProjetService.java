@@ -5,7 +5,7 @@ import gestionnaire.model.Projet;
 import gestionnaire.model.Tache;
 import gestionnaire.repository.EmployeRepository;
 import gestionnaire.repository.ProjetRepository;
-import gestionnaire.repository.TaskRepository;
+import gestionnaire.repository.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +23,7 @@ public class ProjetService {
     EmployeRepository employeRepository;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @Autowired
     EmployeService employeService;
@@ -65,7 +65,7 @@ public class ProjetService {
             projet.setChef_projet(null);
             for (Tache tache:projet.getTaches()){
                 tache.setProjet(null);
-                taskRepository.save(tache);
+                tacheRepository.save(tache);
             }
             for (Employe employe:projet.getEmployes()){
                 Employe e = employeService.findById(employe.getId());
