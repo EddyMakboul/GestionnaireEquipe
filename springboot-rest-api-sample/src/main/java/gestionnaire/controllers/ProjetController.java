@@ -44,9 +44,9 @@ public class ProjetController {
     }
 
     @PostMapping()
-    public Projet postProjet(@RequestBody Projet p) {
-        repo.save(p);
-        return p;
+    public ResponseEntity<Projet> postProjet(@RequestBody Projet p) {
+        Projet n =  repo.save(p);
+        return new ResponseEntity<>(n,HttpStatus.OK);
     }
 
     @PutMapping()
