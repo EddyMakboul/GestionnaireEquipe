@@ -32,7 +32,6 @@ export class NewTaskComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.projetService.getProjetById(params.id).subscribe(projet => {
         this.projet = projet;
-        console.log(this.projet);
       })
     });
     this.createFormControls();
@@ -59,12 +58,11 @@ export class NewTaskComponent implements OnInit {
       this.task.description = this.descrptionControl.value;
       this.task.projet = this.projet;
       this.task.finished = false;
-      console.log(this.task)
-        ; this.taskService.create(this.task).subscribe(
-          response => {
-            this.router.navigate(['/project/', this.projet.id])
-          }
-        )
+      ; this.taskService.create(this.task).subscribe(
+        response => {
+          this.router.navigate(['/project/', this.projet.id])
+        }
+      )
     }
   }
 

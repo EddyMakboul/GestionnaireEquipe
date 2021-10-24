@@ -62,7 +62,6 @@ export class UpdateTaskComponent implements OnInit {
 
     if (this.updateTaskForm.valid) {
       if (this.employeControl.value) {
-        console.log(this.employeControl.value)
         this.employeService.findById(this.employeControl.value).subscribe(
           employe => {
             this.tache.employe = employe;
