@@ -3,10 +3,10 @@
     <form novalidate [formGroup]="memberForm" (ngSubmit)="onSubmit()">
         <div class="mb-3">
             <label for="new-dev">Developer</label>
-            <select id="new-dev" class="form-select w-25" formControlName="role">
+            <select id="new-dev" class="form-select w-25" formControlName="employe">
                 <option *ngFor="let employe of employes" [value]="employe.id">{{employe.prenom}} {{employe.nom}}</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-success">Create</button>
+        <button type="submit" class="btn btn-success">Add</button>
     </form>
 </div>
