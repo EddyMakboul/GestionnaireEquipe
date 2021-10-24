@@ -1,16 +1,14 @@
-<h1>New Project</h1>
-
-<div class="new-projet-form">
+<div class="py-lg-5 px-lg-5 mx-lg-3">
+    <h1 class="fs-2 fw-bold mt-lg-3"> New project </h1>
     <form novalidate [formGroup]="projetForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="name" class="form-control" formControlName="name">
+        <div class="mb-3">
+            <label for="project-name">Name</label>
+            <input id="project-name" type="name" class="form-control" formControlName="name">
         </div>
-        <div class="form-group">
-            <label>Description</label>
-            <textarea type="description" class="form-control" formControlName="description"></textarea>
+        <div class="mb-3">
+            <label for="project-description">Description</label>
+            <textarea type="description" class="form-control" formControlName="description" rows="10" cols="50"></textarea>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Create</button>
     </form>
 </div>
