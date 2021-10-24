@@ -73,21 +73,21 @@ public class GestionnaireService {
         Employe employe9 = populateEmploye(Arrays.asList(competenceJava, competenceScrum),Arrays.asList(projet3, projet5), developpeurRole);
         Employe employe10 = populateEmploye(Arrays.asList(competenceScrum, competenceGP, competenceJava),Arrays.asList(projet4), developpeurRole);
 
-        tacheRepository.save(new Tache("Faire les controllers", "Controller", employe1, projet1));
-        tacheRepository.save(new Tache("Faire les services", "Services", employe2, projet1));
-        tacheRepository.save(new Tache("Faire les beans", "beans", employe3, projet1));
-        tacheRepository.save(new Tache("Faire l'UML", "UML", employe4, projet2));
-        tacheRepository.save(new Tache("Faire le MCD", "MCD", employe5, projet2));
-        tacheRepository.save(new Tache("Faire le login", "Login", employe6, projet2));
-        tacheRepository.save(new Tache("Permettre l'ajout de personnes", "Ajout de personnes", employe7, projet3));
-        tacheRepository.save(new Tache("Permettre la suppression de personnes", "Suppression de personnes", employe8, projet3));
-        tacheRepository.save(new Tache("Faire le front de l'accueil", "Front de l'accueil", employe9, projet3));
-        tacheRepository.save(new Tache("Faire le front du back office", "Font du back office", employe10, projet4));
-        tacheRepository.save(new Tache("Peupler la BD", "Peuplement de la Base de donées", employe2, projet4));
-        tacheRepository.save(new Tache("Ecrire la specification", "Rediger la specification technique", employe5, projet4));
-        tacheRepository.save(new Tache("Mettre en place la BD", "Mis en place de la base de données", employe1, projet5));
-        tacheRepository.save(new Tache("Tester les services", "Test unitaire des services", employe4, projet5));
-        tacheRepository.save(new Tache("Faire le front des infos des users", "Front des informations sur les utilisateurs", employe9, projet5));
+        tacheRepository.save(new Tache("Création des controllers", "Créer les controllers principaux permettant le fonctionnement basique de l'application", employe1, projet1));
+        tacheRepository.save(new Tache("Ajout heure de travail", "Permettre l'ajout de nouvelles heures de travail dans l'emploi du temps d'un employé", employe2, projet1));
+        tacheRepository.save(new Tache("Affichage graphique EDT", "Réaliser l'affichage graphique de l'application", employe3, projet1));
+        tacheRepository.save(new Tache("Diagramme UML", "Réaliser tous les diagrammes UML de l'application", employe4, projet2));
+        tacheRepository.save(new Tache("Api de vente", "Réaliser et utiliser l'API de vente sécurisé", employe5, projet2));
+        tacheRepository.save(new Tache("Login", "Créer la page front et back de login pour les utilisateurs", employe6, projet2));
+        tacheRepository.save(new Tache("MCD", "Réaliser le Modele de donnée intégral pour la gestion des stock", employe7, projet3));
+        tacheRepository.save(new Tache("Supprimer des éléments", "Possibilité de supprimer des produits de la base de donnée", employe8, projet3));
+        tacheRepository.save(new Tache("Front de l'accueil", "Réaliser le front de la page d'accueil de la gestion du stock", employe9, projet3));
+        tacheRepository.save(new Tache("Modélisation 3D", "Réaliser la modélisation 3D de éléments présents", employe10, projet4));
+        tacheRepository.save(new Tache("Documents spécification", "Réaliser les documents de spécification à envoyer au client pour la fin de semaine", employe2, projet4));
+        tacheRepository.save(new Tache("Initialisation BD", "Initilaiser les éléments de la base de données", employe5, projet4));
+        tacheRepository.save(new Tache("Affichage conducteur", "Réaliser un affichage permettant au conducteur de la voiture de changer la puissance moteur", employe1, projet5));
+        tacheRepository.save(new Tache("Tester les composants", "Faire les test unitaires de performances des nouveaux composants", employe4, projet5));
+        tacheRepository.save(new Tache("Modification de la langue", "Création d'un élément permettant la modification de la langue EN/IT", employe9, projet5));
     }
 
     private Employe populateEmploye(List<Competence> competences, List<Projet> projets, Role role) {
