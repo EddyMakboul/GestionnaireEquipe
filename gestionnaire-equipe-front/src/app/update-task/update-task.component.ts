@@ -61,7 +61,8 @@ export class UpdateTaskComponent implements OnInit {
   onSubmit(): void {
 
     if (this.updateTaskForm.valid) {
-      if (this.employeControl.value != "") {
+      if (this.employeControl.value) {
+        console.log(this.employeControl.value)
         this.employeService.findById(this.employeControl.value).subscribe(
           employe => {
             this.tache.employe = employe;
@@ -76,18 +77,14 @@ export class UpdateTaskComponent implements OnInit {
         );
       }
       else {
-        this.employeService.findById(this.employeControl.value).subscribe(
-          employe => {
-            this.tache.employe = undefined;
-            this.tache.nom_tache = this.nomControls.value;
-            this.tache.description = this.descriptionControls.value;
-            this.tacheService.update(this.tache).subscribe(
-              response => {
-                this.router.navigate(['/project/', this.tache.projet.id]);
-              }
-            )
+        this.tache.employe = null;
+        this.tache.nom_tache = this.nomControls.value;
+        this.tache.description = this.descriptionControls.value;
+        this.tacheService.update(this.tache).subscribe(
+          response => {
+            this.router.navigate(['/project/', this.tache.projet.id]);
           }
-        );
+        )
       }
 
     }

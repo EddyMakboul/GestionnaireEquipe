@@ -7,6 +7,6 @@ export class Tache {
     public nom_tache: string;
     public description: string;
     public finished: boolean;
-    public employe?: Employee;
+    public employe?: Employee | null;
     public projet: Projet;
 }
