@@ -8,3 +8,9 @@
     position: fixed;
     width: 15vw;
 }
+
+#card-body-project-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 50vh; 
+}
