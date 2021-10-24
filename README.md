@@ -1,6 +1,8 @@
 # GDX_21
 Plateforme de gestion d'équipe et de tâches.
 Equipe 6
+Membre du groupe  : Florent DHONT, Theo FIEVET, Heddy IABRAZZO, Eddy MAKBOUL, Gwenael ROUX
+
 URL du git : https://github.com/EddyMakboul/GestionnaireEquipe
 
 installation du back java eclipse:
