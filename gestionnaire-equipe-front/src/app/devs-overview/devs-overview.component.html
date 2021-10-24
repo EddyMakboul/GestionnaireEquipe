@@ -1,32 +1,30 @@
 <div class="py-5 px-5 mx-3">
   <h1 class="fs-2 fw-bold mt-lg-3"> Developers overview </h1>
 
-  <h5 class="fs-5 text-muted"> Skills level : 
+  <h5 class="fs-5 text-muted"> Skills level :
     <span class="badge bg-pastel-blue me-2">Beginner</span> |
     <span class="badge bg-pastel-purple mx-2">Confirmed</span> |
     <span class="badge bg-pastel-red mx-2">Expert</span>
   </h5>
-   
-    <div id="card-container">
-        <div class="row justify-content-center mt-lg-3 mt-2 gx-lg-1 px-4 px-lg-0">
-          <div *ngFor="let employe of employes" class="card col-xl-3 col-md-5 col-sm-8 mx-lg-3 mx-2 my-lg-4 my-sm-3 my-2 shadow border-0 h-auto">
-            <div class="card-body">
-              <div class="card-title row justify-content-between d-flex align-items-center">
-                <h5 class="fs-5 col-auto mb-0">{{employe.prenom}} {{employe.nom}}</h5>
-              </div>
-              <h6 class="card-subtitle fs-6 mb-2 text-muted">Developer</h6>
-              <div id="skills-section" class="row justify-content-start mt-lg-2">
-                <div *ngFor="let comp of employe.competences" class="col-auto mx-lg-2 mx-1 my-lg-2 px-0">
-                  <span *ngIf="comp.niveau === 'Moyen'" class="badge bg-pastel-blue p-2"> {{comp.nomCompetence}} </span>
-                  <span *ngIf="comp.niveau === 'Bon'" class="badge bg-pastel-purple p-2"> {{comp.nomCompetence}} </span>
-                  <span *ngIf="comp.niveau === 'Expert'" class="badge bg-pastel-red p-2"> {{comp.nomCompetence}} </span>
-                </div>
-              </div>
-              <button class="btn btn-outline-danger mt-3 col-12" (click)="delete(employe.id)">DELETE</button>
+
+  <div id="card-container">
+    <div class="row justify-content-center mt-lg-3 mt-2 gx-lg-1 px-4 px-lg-0">
+      <div *ngFor="let employe of employes" class="card col-xl-3 col-md-5 col-sm-8 mx-lg-3 mx-2 my-lg-4 my-sm-3 my-2 shadow border-0 h-auto">
+        <div class="card-body">
+          <div class="card-title row justify-content-between d-flex align-items-center">
+            <h5 class="fs-5 col-auto mb-0">{{employe.prenom}} {{employe.nom}}</h5>
+          </div>
+          <h6 class="card-subtitle fs-6 mb-2 text-muted">Developer</h6>
+          <div id="skills-section" class="row justify-content-start mt-lg-2">
+            <div *ngFor="let comp of employe.competences" class="col-auto mx-lg-2 mx-1 my-lg-2 px-0">
+              <span *ngIf="comp.niveau === 'Moyen'" class="badge bg-pastel-blue p-2"> {{comp.nomCompetence}} </span>
+              <span *ngIf="comp.niveau === 'Bon'" class="badge bg-pastel-purple p-2"> {{comp.nomCompetence}} </span>
+              <span *ngIf="comp.niveau === 'Expert'" class="badge bg-pastel-red p-2"> {{comp.nomCompetence}} </span>
             </div>
           </div>
+          <button class="btn btn-outline-danger mt-3 col-12" (click)="delete(employe.id)">DELETE</button>
         </div>
+      </div>
     </div>
+  </div>
 </div>
-
-
