@@ -35,27 +35,18 @@ public class TacheController {
     ProjetRepository projetRepository;
 
     /**
-     * Methode GET, permet de récupérer toutes les taches actives
-     * @return
-     */
-    @GetMapping()
-    public Iterable<Tache> getAllActiveTasks(){
-        return tacheRepository.findAll();
-    }
-
-    /**
      * Methode Post, permet de créer une nouvelle tache
      * @param tache une Tache
      * @return
      */
     @PostMapping()
-    public Tache createTask(@RequestBody Tache tache){
+    public ResponseEntity<Tache> createTask(@RequestBody Tache tache){
         tacheRepository.save(tache);
-        return tache;
+        return new ResponseEntity<Tache>(tache,HttpStatus.CREATED);
     }
 
     /**
-     * Methode DELETE, permet de supprimet une tache via son id
+     * Methode DELETE, permet de supprimer une tache via son id
      * @param id l'id d'une Tache
      */
     @DeleteMapping()
@@ -88,7 +79,7 @@ public class TacheController {
     }
 
     /**
-     * Methode GET, permet de récupérer une tache d'un projet
+     * Methode GET, permet de récupérer une liste de taches d'un projet
      * @param id l'id d'un Projet
      * @return
      */
