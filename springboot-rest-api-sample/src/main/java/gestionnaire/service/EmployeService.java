@@ -6,7 +6,7 @@ import gestionnaire.model.Projet;
 import gestionnaire.model.Tache;
 import gestionnaire.repository.EmployeRepository;
 import gestionnaire.repository.ProjetRepository;
-import gestionnaire.repository.TaskRepository;
+import gestionnaire.repository.TacheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +14,10 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+/**
+ * Service correspondant aux employés
+ */
 
 @Service
 public class EmployeService {
@@ -24,7 +28,7 @@ public class EmployeService {
     ProjetRepository projetRepository;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     public void deleteAllEmployee(){
         List<Employe> employees = employeRepository.findAll();
@@ -130,9 +134,9 @@ public class EmployeService {
     }
 
     private void deleteEmployeeTache(Employe employe){
-        for (Tache t: taskRepository.findTacheByEmploye(employe)){
+        for (Tache t: tacheRepository.findTacheByEmploye(employe)){
             t.setEmploye(null);
-            taskRepository.save(t);
+            tacheRepository.save(t);
         }
     }
 }

@@ -6,6 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * Repository permettant les opérations sur les employées
+ */
+
 public interface EmployeRepository extends JpaRepository<Employe, Long> {
 
     List<Employe> findByNomAndPrenom(String name,String firstname);

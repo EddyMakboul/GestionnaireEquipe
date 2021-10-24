@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+/**
+ * Service permettant d'initialisé les valeurs pour chacun des éléments de l'application :
+ *  projet, employe, role et tache
+ */
 
 @Service
 public class GestionnaireService {
@@ -26,7 +30,7 @@ public class GestionnaireService {
     CompetenceRepository competenceRepository;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @PostConstruct
     public void populate() {
@@ -69,21 +73,21 @@ public class GestionnaireService {
         Employe employe9 = populateEmploye(Arrays.asList(competenceJava, competenceScrum),Arrays.asList(projet3, projet5), developpeurRole);
         Employe employe10 = populateEmploye(Arrays.asList(competenceScrum, competenceGP, competenceJava),Arrays.asList(projet4), developpeurRole);
 
-        taskRepository.save(new Tache("Faire les controllers", "Controller", employe1, projet1));
-        taskRepository.save(new Tache("Faire les services", "Services", employe2, projet1));
-        taskRepository.save(new Tache("Faire les beans", "beans", employe3, projet1));
-        taskRepository.save(new Tache("Faire l'UML", "UML", employe4, projet2));
-        taskRepository.save(new Tache("Faire le MCD", "MCD", employe5, projet2));
-        taskRepository.save(new Tache("Faire le login", "Login", employe6, projet2));
-        taskRepository.save(new Tache("Permettre l'ajout de personnes", "Ajout de personnes", employe7, projet3));
-        taskRepository.save(new Tache("Permettre la suppression de personnes", "Suppression de personnes", employe8, projet3));
-        taskRepository.save(new Tache("Faire le front de l'accueil", "Front de l'accueil", employe9, projet3));
-        taskRepository.save(new Tache("Faire le front du back office", "Font du back office", employe10, projet4));
-        taskRepository.save(new Tache("Peupler la BD", "Peuplement de la Base de donées", employe2, projet4));
-        taskRepository.save(new Tache("Ecrire la specification", "Rediger la specification technique", employe5, projet4));
-        taskRepository.save(new Tache("Mettre en place la BD", "Mis en place de la base de données", employe1, projet5));
-        taskRepository.save(new Tache("Tester les services", "Test unitaire des services", employe4, projet5));
-        taskRepository.save(new Tache("Faire le front des infos des users", "Front des informations sur les utilisateurs", employe9, projet5));
+        tacheRepository.save(new Tache("Faire les controllers", "Controller", employe1, projet1));
+        tacheRepository.save(new Tache("Faire les services", "Services", employe2, projet1));
+        tacheRepository.save(new Tache("Faire les beans", "beans", employe3, projet1));
+        tacheRepository.save(new Tache("Faire l'UML", "UML", employe4, projet2));
+        tacheRepository.save(new Tache("Faire le MCD", "MCD", employe5, projet2));
+        tacheRepository.save(new Tache("Faire le login", "Login", employe6, projet2));
+        tacheRepository.save(new Tache("Permettre l'ajout de personnes", "Ajout de personnes", employe7, projet3));
+        tacheRepository.save(new Tache("Permettre la suppression de personnes", "Suppression de personnes", employe8, projet3));
+        tacheRepository.save(new Tache("Faire le front de l'accueil", "Front de l'accueil", employe9, projet3));
+        tacheRepository.save(new Tache("Faire le front du back office", "Font du back office", employe10, projet4));
+        tacheRepository.save(new Tache("Peupler la BD", "Peuplement de la Base de donées", employe2, projet4));
+        tacheRepository.save(new Tache("Ecrire la specification", "Rediger la specification technique", employe5, projet4));
+        tacheRepository.save(new Tache("Mettre en place la BD", "Mis en place de la base de données", employe1, projet5));
+        tacheRepository.save(new Tache("Tester les services", "Test unitaire des services", employe4, projet5));
+        tacheRepository.save(new Tache("Faire le front des infos des users", "Front des informations sur les utilisateurs", employe9, projet5));
     }
 
     private Employe populateEmploye(List<Competence> competences, List<Projet> projets, Role role) {

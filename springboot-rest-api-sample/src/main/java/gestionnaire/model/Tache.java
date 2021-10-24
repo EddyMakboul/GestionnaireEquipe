@@ -6,6 +6,10 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Correspond aux taches à effectué par un employé pour un projet
+ */
+
 @Entity
 @Table(name ="T_Tache")
 public class Tache implements Serializable {

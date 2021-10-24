@@ -11,8 +11,6 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -31,7 +29,7 @@ public class TacheTest {
     TacheService tacheService;
 
     @Autowired
-    TaskRepository taskRepository;
+    TacheRepository tacheRepository;
 
     @Autowired
     ProjetRepository projetRepository;
@@ -45,7 +43,7 @@ public class TacheTest {
         Employe employe = employeRepository.findAll().get(1);
         Projet projet = projetRepository.findAll().get(1);
         Tache tache = new Tache("aaaa", "tache test", employe, projet);
-        tache = taskRepository.save(tache);
+        tache = tacheRepository.save(tache);
         return tache;
     }
 
@@ -76,7 +74,7 @@ public class TacheTest {
         tache.setEmploye(employe2);
         tache.setProjet(projet2);
         tache.setFinished(true);
-        tache = taskRepository.save(tache);
+        tache = tacheRepository.save(tache);
 
         Long employeid = employe2.getId();
         Long projetid = projet2.getId();
@@ -100,15 +98,15 @@ public class TacheTest {
 
         tache.setEmploye(null);
         tache.setEmploye(null);
-        taskRepository.save(tache);
-        taskRepository.delete(tache);
+        tacheRepository.save(tache);
+        tacheRepository.delete(tache);
 
         Employe employe = employeService.findById(employeid);
         Projet projet = projetService.findById(projetid);
 
         assertEquals(0, employe.getTaches().size());
         assertEquals(0, projet.getTaches().size());
-        assertTrue(taskRepository.findById(tache.getId()).isEmpty());
+        assertTrue(tacheRepository.findById(tache.getId()).isEmpty());
     }
 
 }

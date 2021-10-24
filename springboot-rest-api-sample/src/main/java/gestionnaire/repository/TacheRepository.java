@@ -8,7 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface TaskRepository extends JpaRepository<Tache, Long> {
+/**
+ * Repository permettant les opérations sur les Taches
+ */
+
+public interface TacheRepository extends JpaRepository<Tache, Long> {
     List<Tache> findTacheByEmploye(Employe employe);
 
     List<Tache> findTacheByProjet(Projet projet);
