@@ -47,7 +47,7 @@ public class EmployeController {
 
     /**
      * methode GET, permet de récupérer tous les employés
-     * @return 
+     * @return
      */
     @GetMapping()
     public ResponseEntity<List<Employe>> findAllEmployes ()
@@ -63,7 +63,7 @@ public class EmployeController {
 
     /**
      *Methode GET, permettant de recuperer un employé via son id
-     * @param id
+     * @param id l'id de l'employé
      * @return
      */
     @GetMapping("/{id}")
@@ -80,7 +80,7 @@ public class EmployeController {
 
     /**
      * Methode POST, permettant la création d'un nouvel employé
-     * @param employe
+     * @param employe un Employe
      * @return
      */
     @PostMapping()
@@ -100,7 +100,7 @@ public class EmployeController {
 
     /**
      * Methode PUT, permettant de mettre à jour un employe
-     * @param employe
+     * @param employe un Employe
      * @return
      */
     @PutMapping()
@@ -124,7 +124,7 @@ public class EmployeController {
 
     /**
      * Methode DELETE, permet de supprimet un employé via son id
-     * @param id
+     * @param id l'id d'un Employe
      * @return
      */
     @DeleteMapping("/{id}")
@@ -148,8 +148,8 @@ public class EmployeController {
 
     /**
      * Methode PUT, mise à jour d'un employé en lui ajoutant une compétence
-     * @param competence
-     * @param id
+     * @param competence une Compétence
+     * @param id d'un Employe
      * @return
      */
     @PutMapping("/addcompetence/{id}")
@@ -181,8 +181,8 @@ public class EmployeController {
 
     /**
      * Methode PUT, mise à jour d'un employé en lui supprimant une compétences
-     * @param competence
-     * @param id
+     * @param competence une Competence
+     * @param id d'un Employe
      * @return
      */
     @PutMapping("/removecompetence/{id}")
@@ -219,8 +219,8 @@ public class EmployeController {
 
     /**
      * Methode PUT, pemet d'affecter un employe à un projet
-     * @param projet
-     * @param id
+     * @param projet un Projet
+     * @param id d'un Employe
      * @return
      */
     @PutMapping("/addprojet/{id}")
@@ -252,8 +252,8 @@ public class EmployeController {
 
     /**
      * Methode PUT, permet de retirer un employé à un projet
-     * @param projet
-     * @param id
+     * @param projet un Projet
+     * @param id d'un Employé
      * @return
      */
     @PutMapping("/removeprojet/{id}")
@@ -290,8 +290,8 @@ public class EmployeController {
 
     /**
      * Method PUT, permet d'ajouter une tache à un employé qui est affecté à un projet
-     * @param tache
-     * @param id
+     * @param tache une Tache
+     * @param id d'un Employé
      * @return
      */
     @PutMapping("/addtache/{id}")
@@ -323,8 +323,8 @@ public class EmployeController {
 
     /**
      * Methode PUT, permet de retirer une tache à un employé
-     * @param tache
-     * @param id
+     * @param tache une Tache
+     * @param id d'un Employe
      * @return
      */
     @PutMapping("/removetache/{id}")
