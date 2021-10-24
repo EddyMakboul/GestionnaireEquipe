@@ -40,7 +40,7 @@ export class NewTaskComponent implements OnInit {
   }
 
   createFormControls(): void {
-    this.descrptionControl = new FormControl("", Validators.required);
+    this.descrptionControl = new FormControl("");
     this.nameControl = new FormControl("", Validators.required);
     this.employeControl = new FormControl("",);
   }
