@@ -5,7 +5,7 @@ Equipe 5
 installation du back java eclipse:
 1. Télécharger éclipse https://www.eclipse.org/downloads/
 2. Installer éclipse
-3. Pour importer le proje aller dans file -> import -> existing maven project -> et importer le dossier /springboot-rest-api-sample
+3. Pour importer le projet, aller dans file -> import -> existing maven project -> et importer le dossier /springboot-rest-api-sample
 4. Attendre que eclipse build soit terminé
 5. Aller dans src/main/java/gestionnaire et effectuer un clique droit sur la classe application et run as java application
 
