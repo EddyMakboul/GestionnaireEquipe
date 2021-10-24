@@ -1,21 +1,21 @@
 <div id="side-bar">
     <div class="row justify-content-center px-lg-3">
-        <a class="fs-1 text-white text-center col-12 mt-lg-3" [routerLink]="['devs-overview']">GDX_21</a>
-        <button (click)="switchLogo()" class="btn text-white col-auto mt-lg-5 fw-bold fs-5 d-flex align-items-center"
+        <a class="fs-2 text-white text-center col-12 mt-lg-3 mt-4" [routerLink]="['devs-overview']">GDX_21</a>
+        <button (click)="switchLogo()" class="btn text-white col-auto mt-lg-5 mt-4 fw-bold fs-5 d-flex align-items-center"
             type="button" data-bs-toggle="collapse" data-bs-target="#collapseContent" aria-expanded="false"
             aria-controls="collapseContent">
-            <i class="bi bi-chevron-right me-lg-1" *ngIf="!isLogoSwitched"></i>
-            <i class="bi bi-chevron-down me-lg-1" *ngIf="isLogoSwitched"></i>
-            <span class="mt-lg-2">Projects</span>
+            <i class="bi bi-chevron-right me-1" *ngIf="!isLogoSwitched"></i>
+            <i class="bi bi-chevron-down me-1" *ngIf="isLogoSwitched"></i>
+            <span class="fs-5  mt-lg-2 mt-2">Projects</span>
         </button>
         <div class="collapse" id="collapseContent">
             <div id="card-body-project-list" class="card card-body bg-transparent border-0 p-0">
                 <div class="row justify-content-center">
-                    <ul class="col-7">
-                        <div *ngFor="let item of projects">
-                            <li class="col-12 my-lg-2 d-flex align-items-center"> 
-                                <i class="text-light bi bi-clipboard-data me-lg-1"></i> 
-                                <a class="text-light mt-lg-2" routerLink='/project/{{item.id}}' 
+                    <ul class="col-xl-10 col-md-12">
+                        <div *ngFor="let item of projects"class="row justify-content-center">
+                            <li class="col-auto my-lg-2 my-1 d-flex align-items-center"> 
+                                <i class="text-light bi bi-clipboard-data me-1"></i> 
+                                <a class="text-light mt-lg-2 mt-2" routerLink='/project/{{item.id}}' 
                                     routerLinkActive="active">{{item.nom_projet}}</a>
                             </li>
                         </div>
@@ -25,18 +25,21 @@
         </div>
 
         <div id="adding-links" class="position-absolute bottom-0 my-4">
-            <ul>
-                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-code-slash text-white"></i> 
-                    <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" [routerLink]="['devs-overview']">
-                        Devs overview</button>
+            <ul class="p-0">
+                <li class="row justify-content-center my-lg-0 d-flex align-items-center"> <i class="col-auto bi bi-code-slash text-white ps-0 pe-1"></i> 
+                    <button href class="col-auto btn bg-transparent text-white mt-2 p-0" [routerLink]="['devs-overview']">
+                        Devs overview
+                    </button>
                 </li>
-                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-plus text-white"></i> 
-                    <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" (click)="goToNewProject()">
-                        New project</button>
+                <li class="row justify-content-center my-lg-0 d-flex align-items-center"> <i class="col-auto bi bi-plus text-white ps-0 pe-1"></i> 
+                    <button href class="col-auto btn bg-transparent text-white mt-2 p-0" (click)="goToNewProject()">
+                        New project
+                    </button>
                 </li>
-                <li class="col-12 my-lg-0 d-flex align-items-center"> <i class="bi bi-plus text-white"></i> 
-                    <button href class="btn bg-transparent text-white mt-lg-2 px-1 py-0" (click)="goToNewDev()">
-                        New dev</button>
+                <li class="row justify-content-center my-lg-0 d-flex align-items-center"> <i class="col-auto bi bi-plus text-white ps-0 pe-1"></i> 
+                    <button href class="col-auto btn bg-transparent text-white mt-2 p-0" (click)="goToNewDev()">
+                        New dev
+                    </button>
                 </li>
             </ul>
         </div>

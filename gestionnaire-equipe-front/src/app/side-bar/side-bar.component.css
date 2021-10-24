@@ -6,7 +6,24 @@
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#0037FF", endColorstr="#00B2FF", GradientType=1 );
     height: 100vh;
     position: fixed;
-    width: 15vw;
+}
+
+@media screen and (min-width: 720px) {
+    #side-bar {
+        width: 20vw;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    #side-bar {
+        width: 15vw;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    #side-bar {
+        width: 25vw;
+    }
 }
 
 #card-body-project-list {
