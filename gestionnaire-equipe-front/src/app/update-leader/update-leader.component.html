@@ -1,22 +1,23 @@
 <div class="py-lg-5 px-lg-5 mx-lg-3">
-    <h1 class="fs-2 fw-bold mt-lg-3 mb-lg-2"> Update Project Manager </h1>
+    <h1 class="fs-2 fw-bold mt-lg-3 mb-lg-2"> Update Project </h1>
     <h5 class="fs-5 text-muted mb-lg-3">{{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}</h5>
-
     <form novalidate *ngIf="projet && leaders" [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-            <div class="form-group">
-              <label>name</label>
-              <input type="name" class="form-control" formControlName="name">
-           </div>
-          <div class="form-group">
-              <label>description</label>
-              <textarea type="description" class="form-control" formControlName="description"></textarea>
-          </div>
-            <label for="project-manager">Project Manager</label>
-            <select id="project-manager" class="form-select w-25" formControlName="chef" required>
+            <div class="mb-3">
+                <label for="project-name" class="mb-lg-1">Name</label>
+                <input id="project-name" type="name" class="form-control" formControlName="name">
+            </div>
+            <div class="mb-3">
+                <label for="project-description" class="mb-lg-1">Description</label>
+                <textarea id="project-description" type="description" class="form-control" formControlName="description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="project-manager">Project Manager</label>
+                <select id="project-manager" class="form-select w-25" formControlName="chef" required>
                     <option *ngFor="let leader of leaders" [value]="leader.id">{{leader.prenom}} {{leader.nom}}</option>                
-            </select>
-        </div>
+                </select>
+            </div>
         <button type="submit" class="btn btn-success">Update</button>
     </form>
 </div>
+
+
