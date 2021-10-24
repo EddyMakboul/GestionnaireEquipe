@@ -56,11 +56,11 @@ public class GestionnaireService {
         Employe chef4 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
         Employe chef5 = populateEmploye(Arrays.asList(competenceScrum, competenceGP), null, ChefDeProjetRole);
 
-        Projet projet1 = projetRepository.save(new Projet("Projet 1", "Description 1", chef1));
-        Projet projet2 = projetRepository.save(new Projet("Projet 2", "Description 2", chef2));
-        Projet projet3 = projetRepository.save(new Projet("Projet 3", "Description 3", chef3));
-        Projet projet4 = projetRepository.save(new Projet("Projet 4", "Description 4", chef4));
-        Projet projet5 = projetRepository.save(new Projet("Projet 5", "Description 5", chef5));
+        Projet projet1 = projetRepository.save(new Projet("EDT Hotel", "Application permettant la gestion de l'emploi du temps des employés d'un hotel.", chef1));
+        Projet projet2 = projetRepository.save(new Projet("BuyNow", "Application de vente en ligne d'objet du quotidien.", chef2));
+        Projet projet3 = projetRepository.save(new Projet("BeFresh", "Application de gestion de stock pour une entreprise agro-alimentaire.", chef3));
+        Projet projet4 = projetRepository.save(new Projet("DUNE VR", "Application VR permettant de vivre le film DUNE dans la peau du personnage principal.", chef4));
+        Projet projet5 = projetRepository.save(new Projet("SFLog21", "Création du nouveau logiciel d'optimisation moteur pour Ferrari.", chef5));
 
         Employe employe1 = populateEmploye(Arrays.asList(competenceC, competenceGP), Arrays.asList(projet1, projet5), developpeurRole);
         Employe employe2 = populateEmploye(List.of(competenceJava), Arrays.asList(projet1, projet4), developpeurRole);
