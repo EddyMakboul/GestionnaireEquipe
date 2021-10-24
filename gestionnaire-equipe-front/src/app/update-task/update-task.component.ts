@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Employee } from '../shared/model/employee.model';
 import { Tache } from '../shared/model/tache.model';
 import { EmployeeService } from '../shared/services/employee.service';
@@ -22,7 +22,8 @@ export class UpdateTaskComponent implements OnInit {
 
   constructor(private tacheService: TacheService,
     private employeService: EmployeeService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
@@ -61,7 +62,6 @@ export class UpdateTaskComponent implements OnInit {
 
     if (this.updateTaskForm.valid) {
       if (this.employeControl.value != "") {
-        console.log(this.employeControl.value);
         this.employeService.findById(this.employeControl.value).subscribe(
           employe => {
             this.tache.employe = employe;
@@ -69,7 +69,21 @@ export class UpdateTaskComponent implements OnInit {
             this.tache.description = this.descriptionControls.value;
             this.tacheService.update(this.tache).subscribe(
               response => {
-
+                this.router.navigate(['/project/', this.tache.projet.id]);
+              }
+            )
+          }
+        );
+      }
+      else {
+        this.employeService.findById(this.employeControl.value).subscribe(
+          employe => {
+            this.tache.employe = undefined;
+            this.tache.nom_tache = this.nomControls.value;
+            this.tache.description = this.descriptionControls.value;
+            this.tacheService.update(this.tache).subscribe(
+              response => {
+                this.router.navigate(['/project/', this.tache.projet.id]);
               }
             )
           }

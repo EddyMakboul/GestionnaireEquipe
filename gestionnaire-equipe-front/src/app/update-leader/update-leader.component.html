@@ -2,7 +2,15 @@
 <h2>Actual Leader: {{projet?.chef_projet?.prenom}} {{projet?.chef_projet?.nom}}</h2>
 
 <div class="new-dev-form">
-    <form novalidate [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
+    <form novalidate *ngIf="projet && leaders" [formGroup]="leaderForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>name</label>
+            <input type="name" class="form-control" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label>description</label>
+            <textarea type="description" class="form-control" formControlName="description"></textarea>
+        </div>
         <div class="form-group">
             <label>Leader</label>
             <select class="form-control" formControlName="chef" required>
