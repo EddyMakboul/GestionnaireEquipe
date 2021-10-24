@@ -3,6 +3,7 @@ package gestionnaire.controllers;
 import gestionnaire.model.Employe;
 import gestionnaire.model.Projet;
 import gestionnaire.repository.ProjetRepository;
+import gestionnaire.service.ProjetService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class ProjetController {
     @Autowired
     ProjetRepository repo;
 
+    @Autowired
+    ProjetService projetService;
+
     private final Log logger = LogFactory.getLog(getClass());
 
 
@@ -36,13 +40,13 @@ public class ProjetController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     void deleteProjet(@PathVariable long id) {
-        repo.deleteById(id);
+        projetService.deleteProjetById(id);
     }
 
     @PostMapping()
-    public Projet postProjet(@RequestBody Projet p) {
-        repo.save(p);
-        return p;
+    public ResponseEntity<Projet> postProjet(@RequestBody Projet p) {
+        Projet n =  repo.save(p);
+        return new ResponseEntity<>(n,HttpStatus.OK);
     }
 
     @PutMapping()

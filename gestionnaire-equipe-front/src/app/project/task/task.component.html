@@ -22,6 +22,8 @@
                     <h6 class="card-text mb-2 text-muted">
                         {{tache?.description}}
                     </h6>
+                  <a routerLink='/update-task/{{tache.id}}' routerLinkActive="active"><i
+                                class="bi bi-pencil"></i></a>
                 </div>
             </div>
         </div>
@@ -33,7 +35,6 @@
             <h4 class="col-auto text-muted fs-5 fw-bold bg-light-pastel-yellow rounded py-1">IN PROGRESS</h4>
             <h4 class="col-auto text-muted fs-5 fw-light rounded py-1 ms-lg-2"> {{inProgressList.length}} </h4>
         </div>
-
         <div class="row justify-content-start task-container px-3 pb-2">
             <div *ngFor="let tache of inProgressList" class="card w-100 my-lg-4 border-0 px-0 shadow h-auto">
                 <div class="card-body">
@@ -43,6 +44,8 @@
                         <a href="#" class="card-link me-2 col-auto">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
                         <button class="btn btn-success float-end col-auto"
                         id="task-done-btn" (click)="clicked(tache.id,true)"> COMPLETE </button>
+                      <a routerLink='/update-task/{{tache.id}}' routerLinkActive="active"><i
+                                class="bi bi-pencil"></i></a>
                     </div>
 
                 </div>
@@ -66,6 +69,8 @@
                         {{tache?.description}}
                     </h6>
                     <a href="#" class="card-link me-2">{{tache?.employe?.prenom}}.{{tache?.employe?.nom}}</a>
+                   <a routerLink='/update-task/{{tache.id}}' routerLinkActive="active"><i
+                                class="bi bi-pencil"></i></a>
                 </div>
             </div>
         </div>

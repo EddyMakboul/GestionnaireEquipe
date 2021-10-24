@@ -5,6 +5,7 @@ import gestionnaire.model.Projet;
 import gestionnaire.model.Tache;
 import gestionnaire.repository.ProjetRepository;
 import gestionnaire.repository.TaskRepository;
+import gestionnaire.service.TacheService;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,10 @@ public class TaskController {
     TaskRepository taskRepository;
 
     @Autowired
+    TacheService tacheService;
+
+
+    @Autowired
     ProjetRepository projetRepository;
 
     @GetMapping()
@@ -41,14 +46,7 @@ public class TaskController {
     @DeleteMapping()
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteTask(@PathVariable long id){
-        Optional<Tache> potentialTache = taskRepository.findById(id);
-        if (potentialTache.isPresent()){
-            Tache tache = potentialTache.get();
-            tache.setEmploye(null);
-            tache.setProjet(null);
-            taskRepository.save(tache);
-            taskRepository.deleteById(id);
-        }
+        tacheService.deleteTacheById(id);
     }
 
     @PutMapping()

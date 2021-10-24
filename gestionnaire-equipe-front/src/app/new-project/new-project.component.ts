@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Projet } from '../shared/model/projet.model';
 import { EmployeeService } from '../shared/services/employee.service';
 import { ProjetService } from '../shared/services/projet.service';
@@ -18,7 +19,9 @@ export class NewProjectComponent implements OnInit {
 
   projet: Projet = new Projet();
 
-  constructor(private projetService: ProjetService, private employeService: EmployeeService) { }
+  constructor(private projetService: ProjetService,
+    private employeService: EmployeeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.createFormControls();
@@ -43,6 +46,7 @@ export class NewProjectComponent implements OnInit {
       this.projet.description = this.descrptionControl.value
       this.projetService.create(this.projet).subscribe(
         response => {
+          this.router.navigate(['/project/', response.id])
         }
       )
     }
