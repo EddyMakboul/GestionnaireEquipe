@@ -49,7 +49,7 @@ export class UpdateLeaderComponent implements OnInit {
   createFormControls(): void {
     this.leaderControls = new FormControl("", Validators.required);
     this.nameControls = new FormControl("", Validators.required);
-    this.descriptionControls = new FormControl("", Validators.required);
+    this.descriptionControls = new FormControl("");
     this.nameControls.setValue(this.projet.nom_projet);
     this.descriptionControls.setValue(this.projet.description);
     this.leaderControls.setValue(this.projet.chef_projet?.id)
