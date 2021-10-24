@@ -2,6 +2,4 @@
     height: 55vh;
     overflow-y: auto;
     overflow-x: hidden;
-    scrollbar-color:grey lightgrey;
-    scrollbar-width: thin;
 }
