@@ -2,14 +2,14 @@
     <div class="row justify-content-center px-lg-3">
         <a class="fs-1 text-white text-center col-12 mt-lg-3" [routerLink]="['devs-overview']">GDX_21</a>
         <button (click)="switchLogo()" class="btn text-white col-auto mt-lg-5 fw-bold fs-5 d-flex align-items-center"
-            type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
-            aria-controls="collapseExample">
+            type="button" data-bs-toggle="collapse" data-bs-target="#collapseContent" aria-expanded="false"
+            aria-controls="collapseContent">
             <i class="bi bi-chevron-right me-lg-1" *ngIf="!isLogoSwitched"></i>
             <i class="bi bi-chevron-down me-lg-1" *ngIf="isLogoSwitched"></i>
             <span class="mt-lg-2">Projects</span>
         </button>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body bg-transparent border-0 p-0">
+        <div class="collapse" id="collapseContent">
+            <div id="card-body-project-list" class="card card-body bg-transparent border-0 p-0">
                 <div class="row justify-content-center">
                     <ul class="col-7">
                         <div *ngFor="let item of projects">

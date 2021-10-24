@@ -1,23 +1,21 @@
-<h1>Ajouter un dev</h1>
-
-<div class="new-task-form">
+<div class="py-lg-5 px-lg-5 mx-lg-3">
+    <h1 class="fs-2 fw-bold mt-lg-3 mb-lg-3"> New task </h1>
     <form novalidate [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label>name</label>
-            <input type="name" class="form-control" formControlName="name">
+        <div class="mb-3">
+            <label for="task-name"  class="mb-lg-1">Name</label>
+            <input id="task-name" type="name" class="form-control" formControlName="name">
         </div>
-        <div class="form-group">
-            <label>description</label>
-            <textarea type="description" class="form-control" formControlName="description"></textarea>
+        <div class="mb-3">
+            <label for="task-description" class="mb-lg-1">Description</label>
+            <textarea type="description" class="form-control" formControlName="description" rows="10" cols="50"></textarea>
         </div>
-        <div class="form-group">
-            <label>Assigned to</label>
-            <select class="form-control" formControlName="employe">
-                <option *ngFor="let e of projet.employes" [value]="e.id">{{e.nom}}</option>
 
+        <div class="mb-3">
+            <label for="task-dev">Assigned to</label>
+            <select id="task-dev" class="form-select w-25" formControlName="employe">
+                <option *ngFor="let employe of projet.employes" [value]="employe.id">{{employe.prenom}} {{employe.nom}}</option>
             </select>
         </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-success">Create</button>
     </form>
 </div>
